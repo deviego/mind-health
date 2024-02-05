@@ -1,4 +1,4 @@
-import { LayoutGrid, Calendar, Bell, ChevronDown } from 'lucide-react'
+import { LayoutGrid, Bell, ChevronDown, FileText } from 'lucide-react'
 import {
   Popover,
   PopoverContent,
@@ -17,7 +17,7 @@ export const NavBar = () => {
 
       <div className="flex gap-12 text-secondary-gray ">
         <LayoutGrid className="w-[22px]" />
-        <Calendar className="w-[22px]" />
+        <FileText className="w-[22px]" />
         <Bell className="w-[22px]" />
       </div>
 
