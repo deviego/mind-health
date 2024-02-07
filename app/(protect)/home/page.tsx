@@ -1,6 +1,5 @@
 import { Card } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
-import { CalendarDays } from 'lucide-react'
 
 const HomePage = () => {
   return (
