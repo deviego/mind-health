@@ -8,6 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { Separator } from '../../../components/ui/separator'
 
 const Register = () => {
   return (
@@ -90,7 +91,7 @@ const Register = () => {
                 className="mb-4"
               />
             </div>
-            <Divider />
+            <Separator orientation="vertical" />
             <div className="w-full">
               <label htmlFor="name" className="pl-2 text-sm font-bold">
                 Nome da clinica

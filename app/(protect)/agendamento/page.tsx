@@ -14,6 +14,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
+import { ScheduleCalendar } from '@/components/scheduleCalendar'
 import {
   Select,
   SelectContent,
@@ -24,6 +25,7 @@ import {
 
 export default function AgendamentoPage() {
   const [date, setDate] = useState<Date | undefined>(new Date())
+  const handleDayClick = () => console.log(date)
 
   return (
     <div className="w-full flex overflow-y-hidden">
@@ -32,7 +34,8 @@ export default function AgendamentoPage() {
           mode="single"
           selected={date}
           onSelect={setDate}
-          className="rounded-md border"
+          className="rounded-md border bg-white"
+          onDayClick={handleDayClick}
         />
       </div>
       <div className="w-full flex item-center justify-center">
@@ -130,7 +133,7 @@ export default function AgendamentoPage() {
               </DialogContent>
             </Dialog>
           </Card>
-          <img src="/imgs/agendamento.png" alt="calendar" />
+          <ScheduleCalendar />
         </div>
         <img
           src="/imgs/rouded-blue.svg"
