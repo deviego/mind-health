@@ -10,7 +10,7 @@ import { Card } from './ui/card'
 
 export const NavBar = () => {
   return (
-    <div className="w-full flex justify-between items-center px-12 py-7">
+    <div className="w-full flex justify-between items-center px-12 py-7 max-xl:px-5 max-xl:py-3">
       <div>
         <img src="/imgs/MiND-logo.png" alt="logo" />
       </div>

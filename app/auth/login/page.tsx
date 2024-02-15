@@ -37,17 +37,17 @@ const Login = () => {
           </p>
         </form>
       </div>
-      <div className="flex justify-end align-bottom w-full">
+      <div className="flex justify-end align-bottom w-full ">
         <img
           src="/imgs/iphoneLogin.png"
           alt="Mockup"
-          className="max-w-[46.8125em] absolute bottom-0 right-0"
+          className="w-[45.8125em]  absolute bottom-0 right-0 z-10 max-xl:w-[42 .8125em] "
         />
 
         <img
           src="/imgs/effect.png"
           alt="effect"
-          className="max-h-[49.53125em]"
+          className="max-h-[49.53125em] absolute bottom-0 right-0"
         />
       </div>
     </div>
