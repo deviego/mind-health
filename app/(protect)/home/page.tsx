@@ -1,4 +1,6 @@
+/* eslint-disable prettier/prettier */
 'use client'
+
 import { ScheduleCalendar } from '@/components/scheduleCalendar'
 import { Card } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
@@ -8,11 +10,14 @@ import {
   CarouselItem,
 } from '@/components/ui/carousel'
 import Autoplay from 'embla-carousel-autoplay'
-import React from 'react'
+import React, {  useRef, useState } from 'react'
 import { Crown } from 'lucide-react'
 
 const HomePage = () => {
   const today = new Date()
+
+
+  const [tags, setTags] = useState<string[]>([])
 
   const options = {
     year: 'numeric',
@@ -25,10 +30,17 @@ const HomePage = () => {
     weekday: 'short', // Converte 'weekday' para o formato curto
   })
 
-  const formattedDate = today.toLocaleDateString('pt-BR', dateTimeFormatOptions)
+  const formattedDate = today.toLocaleDateString(
+    'pt-BR',
+    dateTimeFormatOptions as Intl.DateTimeFormatOptions | undefined,
+  )
+
   const plugin = React.useRef(
     Autoplay({ delay: 1000, stopOnInteraction: true }),
   )
+
+  const bodyRef = useRef<HTMLDivElement | null>(null)
+
 
   return (
     <div className="flex justify-between w-full">
@@ -97,8 +109,29 @@ const HomePage = () => {
           </p>
         </Card>
       </div>
-      <div className="w-full h-full">
-        <img src="/imgs/body-home.png" alt="corpo-humano" />
+
+      <div
+        className="w-full h-full relative bg-[url('/imgs/body-home.png')] bg-no-repeat bg-cover bg-center bg-red-500"
+        ref={bodyRef}
+      >
+          <img
+            src="/imgs/bullet.svg"
+            alt="body"
+            style={{
+              top: `${(10 * (bodyRef.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
+              left: `${(30 * (bodyRef.current?.clientWidth)) / 100}px`,
+            }} 
+            className={'absolute'}
+          />
+          <img
+            src="/imgs/bullet.svg"
+            alt="body"
+            style={{
+              top: `${(15 * (bodyRef.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
+              left: `${(65 * (bodyRef.current?.clientWidth)) / 100}px`,
+            }}
+            className={'absolute'}
+          />
       </div>
       <div className="w-full flex flex-col items-end mr-4">
         <div className="flex gap-3">
@@ -112,6 +145,7 @@ const HomePage = () => {
               />
               <Crown className="text-yellow-500" />
             </div>
+           {`${((30 * 728) / 100).toString()}px`}
             <Carousel
               plugins={[plugin.current]}
               onMouseEnter={plugin.current.stop}
