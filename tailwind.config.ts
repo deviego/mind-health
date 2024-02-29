@@ -46,6 +46,9 @@ const config = {
           gray: '#4F535A',
           white: '#EDEDED',
         },
+        ellipse: '#200492',
+        pink: '#E500F9',
+        'g-blue': 'gradient-to-r from-[#006BF9] to-[#31E6FF]',
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))',

@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/table'
 import { useEffect, useState } from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { cn } from '@/lib/utils'
 
 type Consultation = {
   doctorName: string
@@ -26,8 +27,9 @@ type Doctor = {
 }
 
 interface Props {
-  date: Date | undefined
-  setDate: React.Dispatch<React.SetStateAction<Date | undefined>>
+  date?: Date | undefined
+  setDate?: React.Dispatch<React.SetStateAction<Date | undefined>>
+  className?: string
 }
 
 const doctors: Doctor[] = [
@@ -37,7 +39,7 @@ const doctors: Doctor[] = [
       {
         doctorName: 'Dr. Silva',
         patient: 'John Doe',
-        startTime: '09:00',
+        startTime: '08:00',
         endTime: '10:00',
         typeService: 'Consulta',
       },
@@ -63,22 +65,33 @@ const doctors: Doctor[] = [
       {
         doctorName: 'Dr. Souza',
         patient: 'John Does',
-        startTime: '09:00',
+        startTime: '07:00',
         endTime: '10:00',
         typeService: 'Consulta',
       },
       {
         doctorName: 'Dr. Souza',
         patient: 'Jane Smitht',
-        startTime: '11:30',
+        startTime: '11:00',
         endTime: '13:00',
         typeService: 'Operação',
+      },
+      {
+        doctorName: 'Dr. Souza',
+        patient: 'Jane Smith',
+        startTime: '14:00',
+        endTime: '20:00',
+        typeService: 'Ocupado',
       },
     ],
   },
 ]
 
-export const ScheduleCalendar: React.FC<Props> = ({ date, setDate }) => {
+export const ScheduleCalendar: React.FC<Props> = ({
+  date,
+  setDate,
+  className,
+}) => {
   const hours = Array.from({ length: 16 }, (_, index) => index + 7)
   const [consultations, setConsultations] = useState<Consultation[]>([])
 
@@ -105,11 +118,13 @@ export const ScheduleCalendar: React.FC<Props> = ({ date, setDate }) => {
   }, [doctors])
 
   return (
-    <Card className="flex items-center justify-center overflow">
+    <Card
+      className={cn('flex items-center justify-center overflow', className)}
+    >
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-5"></TableHead>
+            <TableHead className="w-3"></TableHead>
             {hours.map((hour) => (
               <TableHead key={hour} className="">
                 {hour}:00

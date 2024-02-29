@@ -10,7 +10,7 @@ import { Card } from './ui/card'
 
 export const NavBar = () => {
   return (
-    <div className="w-full flex justify-between items-center px-12 py-7 max-xl:px-5 max-xl:py-3">
+    <div className="w-full flex justify-between items-center px-4 pt-2 pb-6 ">
       <div>
         <img src="/imgs/MiND-logo.png" alt="logo" />
       </div>
@@ -21,7 +21,7 @@ export const NavBar = () => {
         <Bell className="w-[22px]" />
       </div>
 
-      <div className="">
+      <div className="mt-1">
         <Popover>
           <PopoverTrigger>
             <Card className="bg-white w-full flex gap-1 items-center px-4 rounded-3xl h-12">
