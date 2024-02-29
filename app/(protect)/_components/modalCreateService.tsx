@@ -30,9 +30,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Pencil } from 'lucide-react'
+import { Pencil, X } from 'lucide-react'
 
 import { Textarea } from '@/components/ui/textarea'
+import { useState } from 'react'
 
 type createProps = {
   isUpdate?: boolean
@@ -82,8 +83,19 @@ export const CreateService = ({ isUpdate }: createProps) => {
     return options
   }
 
-  // Gera opções de tempo de 00h30 a 23h30, de 30 em 30 minutos
   const options = generateTimeOptions(30, 1410, 30)
+
+  const [toolsTags, setToolsTags] = useState<string[]>([])
+
+  function onToolsTagAdded(tag: string) {
+    if (toolsTags.includes(tag)) return
+
+    setToolsTags((prevTags) => [...prevTags, tag])
+  }
+
+  function deleteToolsTag(tag: string) {
+    setToolsTags((prevTags) => prevTags.filter((prevTag) => prevTag !== tag))
+  }
 
   return (
     <Dialog>
@@ -278,8 +290,32 @@ export const CreateService = ({ isUpdate }: createProps) => {
                         placeholder="Pesquisar instrumentos"
                         className="w-64"
                         {...field}
+                        onKeyPress={(event) => {
+                          if (event.key === 'Enter') {
+                            onToolsTagAdded(event.currentTarget.value)
+                          }
+                        }}
                       />
                     </FormControl>
+                    <div className=" gap-2 max-w-64 flex h-11 flex-wrap py-1">
+                      {toolsTags.map((tag) => (
+                        <Card
+                          key={tag}
+                          className="rounded-3xl border flex items-center justify-between
+                            gap-1 max-w-32 px-3 py-1"
+                        >
+                          <p className="text-sm ">{tag}</p>
+                          <div className="w-full">
+                            <Card
+                              className="rounded-full border h-6 w-6 text-center hover:bg-primary hover:font-light hover:text-white  cursor-pointer"
+                              onClick={() => deleteTollsTag(tag)}
+                            >
+                              <p className="font-bold text-xs m-1">X</p>
+                            </Card>
+                          </div>
+                        </Card>
+                      ))}
+                    </div>
                     <FormMessage />
                   </FormItem>
                 )}
