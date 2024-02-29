@@ -18,7 +18,6 @@ import {
 import {
   Select,
   SelectContent,
-  SelectItem,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
@@ -30,7 +29,12 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Card } from '@/components/ui/card'
+import { Pencil } from 'lucide-react'
 
+type createProps = {
+  isUpdate?: boolean
+}
 const formSchema = z.object({
   productName: z.string(),
   categoryProduct: z.string(),
@@ -42,7 +46,7 @@ const formSchema = z.object({
   obsToPatient: z.string(),
   serviceDescription: z.string(),
 })
-export const CreateProduct = () => {
+export const CreateProduct = ({ isUpdate }: createProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {},
@@ -55,9 +59,15 @@ export const CreateProduct = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="px-3 py-1 rounded-xl text-white">
-          Cadastrar Produto
-        </Button>
+        {isUpdate ? (
+          <Card className="rounded-full p-2  bg-white cursor-pointer hover:bg-primary hover:text-white">
+            <Pencil className="w-[24px] h-[24px]" />
+          </Card>
+        ) : (
+          <Button className="px-3 py-1 rounded-xl text-white">
+            Cadastrar produto
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent className=" w-[53em]">
         <DialogHeader>

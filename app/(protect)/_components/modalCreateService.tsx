@@ -1,5 +1,6 @@
 'use client'
 import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
 import {
   Dialog,
   DialogContent,
@@ -12,14 +13,13 @@ import {
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+
 import { Separator } from '@/components/ui/separator'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -27,13 +27,16 @@ import { useForm } from 'react-hook-form'
 import {
   Select,
   SelectContent,
-  SelectItem,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { Pencil } from 'lucide-react'
 
 import { Textarea } from '@/components/ui/textarea'
 
+type createProps = {
+  isUpdate?: boolean
+}
 const formSchema = z.object({
   nameService: z.string(),
   categoryService: z.string(),
@@ -46,7 +49,8 @@ const formSchema = z.object({
   serviceCost: z.number(),
   salesPriceService: z.number(),
 })
-export const CreateService = () => {
+
+export const CreateService = ({ isUpdate }: createProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {},
@@ -84,9 +88,15 @@ export const CreateService = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="px-3 py-1 rounded-xl text-white">
-          Cadastrar serviço
-        </Button>
+        {isUpdate ? (
+          <Card className="rounded-full p-2  bg-white cursor-pointer hover:bg-primary hover:text-white">
+            <Pencil className="w-[24px] h-[24px]" />
+          </Card>
+        ) : (
+          <Button className="px-3 py-1 rounded-xl text-white">
+            Cadastrar serviço
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent className=" w-[53em]">
         <DialogHeader>

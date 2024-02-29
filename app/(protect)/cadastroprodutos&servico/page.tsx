@@ -1,10 +1,10 @@
 'use client'
-import { Button } from '@/components/ui/button'
+
 import { Card } from '@/components/ui/card'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { Pencil, Stethoscope, Syringe } from 'lucide-react'
-import { CreateService } from '../_components/createService'
-import { CreateProduct } from '../_components/createProduct'
+import { Stethoscope, Syringe } from 'lucide-react'
+import { CreateService } from '../_components/modalCreateService'
+import { CreateProduct } from '../_components/modalCreateProduct'
 
 export default function CadastroProdutosEServico() {
   return (
@@ -93,9 +93,7 @@ export default function CadastroProdutosEServico() {
                 </div>
               </div>
               <div>
-                <Card className="rounded-full p-2  bg-white">
-                  <Pencil className="w-[24px] h-[24px]" />
-                </Card>
+                <CreateService isUpdate={true} />
               </div>
             </Card>
           ))}
@@ -124,9 +122,7 @@ export default function CadastroProdutosEServico() {
                 </div>
               </div>
               <div>
-                <Card className="rounded-full p-2  bg-white">
-                  <Pencil className="w-[24px] h-[24px]" />
-                </Card>
+                <CreateProduct isUpdate />
               </div>
             </Card>
           ))}
