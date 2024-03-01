@@ -1,46 +1,50 @@
 /* eslint-disable prettier/prettier */
-'use client'
+"use client";
 
-import { ScheduleCalendar } from '@/components/scheduleCalendar'
-import { Card } from '@/components/ui/card'
-import { Progress } from '@/components/ui/progress'
+import { ScheduleCalendar } from "@/components/scheduleCalendar";
+import { Card } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-} from '@/components/ui/carousel'
-import Autoplay from 'embla-carousel-autoplay'
-import React, {  useRef, useState } from 'react'
-import { Crown } from 'lucide-react'
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import React, { useRef, useState } from "react";
+import { Crown } from "lucide-react";
 
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card"
+ 
 const HomePage = () => {
-  const today = new Date()
+  const today = new Date();
 
-
-  const [tags, setTags] = useState<string[]>([])
+  const [tags, setTags] = useState<string[]>([]);
 
   const options = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    weekday: 'long',
-  }
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    weekday: "long",
+  };
 
   const dateTimeFormatOptions = Object.assign({}, options, {
-    weekday: 'short', // Converte 'weekday' para o formato curto
-  })
+    weekday: "short", // Converte 'weekday' para o formato curto
+  });
 
   const formattedDate = today.toLocaleDateString(
-    'pt-BR',
-    dateTimeFormatOptions as Intl.DateTimeFormatOptions | undefined,
-  )
+    "pt-BR",
+    dateTimeFormatOptions as Intl.DateTimeFormatOptions | undefined
+  );
 
   const plugin = React.useRef(
-    Autoplay({ delay: 1000, stopOnInteraction: true }),
-  )
+    Autoplay({ delay: 20000, stopOnInteraction: true })
+  );
 
-  const bodyRef = useRef<HTMLDivElement | null>(null)
-
+  const bodyRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <div className="flex justify-between w-full">
@@ -60,9 +64,9 @@ const HomePage = () => {
             </p>
             <div>
               <h1 className="font-bold text-3xl text-center pb-2 max-xl:text-xl">
-                71%
+                56%
               </h1>
-              <Progress value={71} />
+              <Progress value={56} />
               <p className="font-bold text-xs text-end mt-1 max-xl:text-[10px]">
                 R$ 1500.000,00
               </p>
@@ -111,27 +115,198 @@ const HomePage = () => {
       </div>
 
       <div
-        className="w-full h-full relative bg-[url('/imgs/body-home.png')] bg-no-repeat bg-cover bg-center bg-red-500"
+        className="w-full h-screen relative bg-[url('/imgs/body-home.png')] bg-no-repeat bg-cover bg-center bg-red-500"
         ref={bodyRef}
       >
-          <img
-            src="/imgs/bullet.svg"
-            alt="body"
+        <HoverCard>
+          <HoverCardTrigger>
+            <img
+              src="/imgs/bullet.svg"
+              alt="body"
+              style={{ 
+                top: `${(11 * (bodyRef!.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
+                left: `${(27 * bodyRef!.current?.clientWidth) / 100}px` ,
+              }} 
+              className={"absolute"}
+              width={40}
+            />
+          </HoverCardTrigger>
+          <HoverCardContent  style={{ 
+                top: `${(11 * (bodyRef!.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
+                left: `${(27 * bodyRef!.current?.clientWidth) / 100}px` ,
+              }}
+              ref={bodyRef}>
+            <div className="flex items-center gap-3">
+              <div>
+                <p className="text-sm font-bold text-white">
+                  {" "}
+                  Informação titulo ombro{" "}
+                </p>
+                <p className="text-xs text-white"> Dados sobre a parte </p>
+              </div>
+              <div>
+                <p className="text-lg font-bold text-white"> 50%</p>
+                <p className="text-xs text-white font-bold">
+                  {" "}
+                  Dados sobre a parte{" "}
+                </p>
+              </div>
+            </div>
+          </HoverCardContent>
+        </HoverCard>
+         
+        
+        <HoverCard>
+          <HoverCardTrigger>
+             <img
+          src="/imgs/bullet.svg"
+          alt="body"
+          style={{
+            top: `${(28 * (bodyRef!.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
+            left: `${(78 * bodyRef!.current?.clientWidth) / 100}px`, 
+          }}
+          width={40}
+          className={"absolute"}
+        /> 
+          </HoverCardTrigger>
+          <HoverCardContent  style={{
+            top: `${(28 * (bodyRef!.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
+            left: `${(78 * bodyRef!.current?.clientWidth) / 100}px`,
+          }}
+          ref={bodyRef} 
+          >
+            <div className="flex items-center gap-3">
+              <div>
+                <p className="text-sm font-bold text-white">
+                  {" "}
+                  Informação titulo 2{" "}
+                </p>
+                <p className="text-xs text-white"> Dados sobre a parte </p>
+              </div>
+              <div>
+                <p className="text-lg font-bold text-white"> 50%</p>
+                <p className="text-xs text-white font-bold">
+                  {" "}
+                  Dados sobre a parte{" "}
+                </p>
+              </div>
+            </div>
+          </HoverCardContent>
+        </HoverCard>
+        <HoverCard>
+          <HoverCardTrigger>
+             <img
+          src="/imgs/bullet.svg"
+          alt="body"
+          style={{
+            top: `${(14 * (bodyRef!.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
+            left: `${(65 * bodyRef!.current?.clientWidth) / 100}px`,
+          }}
+          width={40}
+          className="absolute"
+        />
+          </HoverCardTrigger>
+          <HoverCardContent style={{
+            top: `${(14 * (bodyRef!.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
+            left: `${(65 * bodyRef!.current?.clientWidth) / 100}px`,
+          }}
+          ref={bodyRef}
+          >
+            <div className="flex items-center gap-3">
+              <div>
+                <p className="text-sm font-bold text-white">
+                  {" "}
+                  Informação titulo{" "}
+                </p>
+                <p className="text-xs text-white"> Dados sobre a parte </p>
+              </div>
+              <div>
+                <p className="text-lg font-bold text-white"> 50%</p>
+                <p className="text-xs text-white font-bold">
+                  {" "}
+                  Dados sobre a parte{" "}
+                </p>
+              </div>
+            </div>
+          </HoverCardContent> 
+        </HoverCard>
+        <HoverCard>
+          <HoverCardTrigger>
+             <img
+          src="/imgs/bullet.svg"
+          alt="body" 
+          style={{
+            top: `${(28 * (bodyRef!.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
+            right: `${(78 * bodyRef!.current?.clientWidth) / 100}px`,
+          }}
+          width={40}
+          className={"absolute "}
+        />
+          </HoverCardTrigger>
+          <HoverCardContent style={{
+            top: `${(28 * (bodyRef!.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
+            right: `${(78 * bodyRef!.current?.clientWidth) / 100}px`,
+          }}
+          ref={bodyRef}> 
+            <div className="flex items-center gap-3">
+              <div>
+                <p className="text-sm font-bold text-white">
+                  {" "}
+                  Informação titulo{" "}
+                </p>
+                <p className="text-xs text-white"> Dados sobre a parte </p>
+              </div>
+              <div>
+                <p className="text-lg font-bold text-white"> 50%</p>
+                <p className="text-xs text-white font-bold">
+                  {" "}
+                  Dados sobre a parte{" "}
+                </p>
+              </div>
+            </div>
+          </HoverCardContent>
+        </HoverCard>
+
+        <HoverCard>
+          <HoverCardTrigger>
+            <img
+              src="/imgs/bullet.svg"
+              alt="body"
+              style={{
+                top: `${(40 * (bodyRef!.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
+                left: `${(33 * bodyRef!.current?.clientWidth) / 100}px` ,
+              }}
+              width={40}
+              className={"absolute"}
+            />
+          </HoverCardTrigger>
+          <HoverCardContent  
+            ref={bodyRef}
             style={{
-              top: `${(10 * (bodyRef.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
-              left: `${(30 * (bodyRef.current?.clientWidth)) / 100}px`,
-            }} 
-            className={'absolute'}
-          />
-          <img
-            src="/imgs/bullet.svg"
-            alt="body"
-            style={{
-              top: `${(15 * (bodyRef.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
-              left: `${(65 * (bodyRef.current?.clientWidth)) / 100}px`,
+              top: `${(40 * (bodyRef!.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
+              left: `${(33 * bodyRef!.current?.clientWidth) / 100}px` ,
             }}
-            className={'absolute'}
-          />
+          >
+            <div className="flex items-center gap-3">
+              <div>
+                <p className="text-sm font-bold text-white">
+                  {" "}
+                  Informação titulo{" "}
+                </p>
+                <p className="text-xs text-white"> Dados sobre a parte </p>
+              </div>
+              <div>
+                <p className="text-lg font-bold text-white"> 50%</p>
+                <p className="text-xs text-white font-bold">
+                  {" "}
+                  Dados sobre a parte{" "}
+                </p>
+              </div>
+            </div>
+          </HoverCardContent>
+        </HoverCard>
+      
+
       </div>
       <div className="w-full flex flex-col items-end mr-4">
         <div className="flex gap-3">
@@ -145,7 +320,7 @@ const HomePage = () => {
               />
               <Crown className="text-yellow-500" />
             </div>
-           {`${((30 * 728) / 100).toString()}px`}
+            
             <Carousel
               plugins={[plugin.current]}
               onMouseEnter={plugin.current.stop}
@@ -203,7 +378,7 @@ const HomePage = () => {
                   </div>
                 </div>
                 <p className="text-[10px] text-secondary-gray ml-4 mt-1">
-                  Para hoje as{' '}
+                  Para hoje as{" "}
                   <span className="text-primary font-bold">14h 30min</span>
                 </p>
               </Card>
@@ -213,6 +388,6 @@ const HomePage = () => {
         <ScheduleCalendar className="w-[458px] mt-3" date={today} />
       </div>
     </div>
-  )
-}
-export default HomePage
+  );
+};
+export default HomePage;
