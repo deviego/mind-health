@@ -1,7 +1,9 @@
+import { Card } from '@/components/ui/card'
+
 export default function FinanceiroPage() {
   return (
-    <div>
-      <h1>Financeiro</h1>
+    <div className="fex flex-col w-full ">
+      <Card></Card>
     </div>
   )
 }
