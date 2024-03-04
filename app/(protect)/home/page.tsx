@@ -219,7 +219,7 @@ const HomePage = () => {
               <HoverCardContent
                 style={{
                   top: `${(14 * (bodyRef.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
-                  left: `${(65 * bodyRef.current?.clientWidth) / 100}px`,
+                  left: `${(0 * bodyRef.current?.clientWidth) / 100}px`,
                 }}
                 ref={bodyRef}
               >
