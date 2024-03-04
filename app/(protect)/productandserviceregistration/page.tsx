@@ -8,7 +8,7 @@ import { CreateProduct } from '../_components/modalCreateProduct'
 
 export default function CadastroProdutosEServico() {
   return (
-    <div className="fex flex-col w-full ">
+    <div className="fex flex-col w-full items-center">
       <div className="w-full gap-4 flex pb-5">
         <Card className="w-[500px] h-[300px] max-xl:h-[280px] max-xl:w-[450px] rounded-2xl max-xl:text-[10px] flex flex-col bg-[url('/imgs/lab2.webp')] justify-between">
           <div className=" w-full px-3 pt-2 flex  justify-between items-center bg-gradient-to-b from-white to-transparent rounded-2xl">

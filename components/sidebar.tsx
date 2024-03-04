@@ -10,19 +10,19 @@ export const Sidebar = () => {
   const NavLink = [
     { href: '/home', icon: <Home className="w-[22px]" /> },
     {
-      href: '/agendamento',
+      href: '/scheduling',
       icon: <Calendar className="w-[22px]" />,
     },
     {
-      href: '/cadastroprodutos&servico',
+      href: '/productandserviceregistration',
       icon: <Syringe className="w-[22px]" />,
     },
     {
-      href: '/financeiro',
+      href: '/financial',
       icon: <Landmark className="w-[22px]" />,
     },
     {
-      href: '/configuração',
+      href: '/settings',
       icon: <Settings className="w-[22px]" />,
     },
   ]
@@ -30,7 +30,9 @@ export const Sidebar = () => {
   return (
     <div className="w-28 flex flex-col items-center justify-center h-full gap-3">
       {NavLink.map((link, index) => {
-        const isActive = pathName.startsWith(link.href)
+        const isActive =
+          pathName === link.href || (pathName === '/' && link.href === '/home')
+
         return (
           <Link href={link.href} key={index}>
             <Card
