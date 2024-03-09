@@ -11,13 +11,40 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu'
-import Link from 'next/link'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+} from '@/components/ui/dialog'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 
+import Link from 'next/link'
+import { CreatePatient } from '@/app/(protect)/_components/ModalCreatePatient'
+import { useState } from 'react'
+import { CreateDoctor } from '@/app/(protect)/_components/ModalCreateDoctor'
+enum Dialogs {
+  dialog1 = 'dialog1',
+  dialog2 = 'dialog2',
+}
 export const NavBar = () => {
   const NavLink = [
     { href: '/profile', label: 'Perfil' },
     { href: '/profile', label: 'Perfil' },
   ]
+
+  const [dialog, setDialog] = useState<string>()
+
   return (
     <div className="w-full flex justify-between items-center px-4 pt-2 pb-6 ">
       <div>
@@ -25,9 +52,42 @@ export const NavBar = () => {
       </div>
 
       <div className="flex gap-12 text-secondary-gray ">
-        <LayoutGrid className="w-[22px]" />
-        <FileText className="w-[22px]" />
-        <Bell className="w-[22px]" />
+        <Dialog>
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <LayoutGrid className="w-[22px]" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuSeparator />
+              <DialogTrigger
+                asChild
+                onClick={() => {
+                  setDialog(Dialogs.dialog1)
+                }}
+              >
+                <DropdownMenuItem>Criar paciente</DropdownMenuItem>
+              </DialogTrigger>
+              <DialogTrigger
+                asChild
+                onClick={() => {
+                  setDialog(Dialogs.dialog2)
+                }}
+              >
+                <DropdownMenuItem>Criar médico</DropdownMenuItem>
+              </DialogTrigger>
+              <DropdownMenuItem>
+                <Link href="/healthInsurance">Convênio</Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <DialogContent className="w-[600px]">
+            {dialog === Dialogs.dialog1 ? <CreatePatient /> : <CreateDoctor />}
+          </DialogContent>
+        </Dialog>
+        <Link href="/scheduling">
+          <FileText />
+        </Link>
+        <Bell />
       </div>
 
       <div className="mt-1">

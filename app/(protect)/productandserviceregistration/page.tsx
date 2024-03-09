@@ -8,8 +8,8 @@ import { CreateProduct } from '../_components/modalCreateProduct'
 
 export default function CadastroProdutosEServico() {
   return (
-    <div className="fex flex-col w-full items-center">
-      <div className="w-full gap-4 flex pb-5">
+    <div className="flex flex-col w-full items-center justify-center">
+      <div className="w-full gap-4 flex pb-5 justify-center">
         <Card className="w-[500px] h-[300px] max-xl:h-[280px] max-xl:w-[450px] rounded-2xl max-xl:text-[10px] flex flex-col bg-[url('/imgs/lab2.webp')] justify-between">
           <div className=" w-full px-3 pt-2 flex  justify-between items-center bg-gradient-to-b from-white to-transparent rounded-2xl">
             <img
@@ -69,7 +69,7 @@ export default function CadastroProdutosEServico() {
           </div>
         </Card>
       </div>
-      <div className="w-full flex gap-4">
+      <div className="w-full flex gap-4 justify-center">
         <ScrollArea className="w-[500px]  h-[250px] max-xl:h-[200px] max-xl:w-[450px] rounded-2xl  bg-white ">
           <h1 className="pl-5 py-3 font-semibold">Serviços Cadastrados</h1>
           {Array.from({ length: 15 }).map((_, index) => (
@@ -85,10 +85,10 @@ export default function CadastroProdutosEServico() {
                 </div>
                 <div>
                   <h1 className="text-sm leading-none font-semibold">
-                    Nome do Serviço
+                    Nome do convênio
                   </h1>
                   <p className="text-xs ">
-                    Descritivo informativo sobre o serviço
+                    Descritivo informativo sobre o convênio
                   </p>
                 </div>
               </div>

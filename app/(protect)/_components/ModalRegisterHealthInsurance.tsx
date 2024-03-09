@@ -35,23 +35,21 @@ import { Pencil, X } from 'lucide-react'
 import { Textarea } from '@/components/ui/textarea'
 import { useState } from 'react'
 
-type createProps = {
+const formSchema = z.object({
+  insuranceName: z.string(),
+  categoryInsurance: z.string(),
+  insuranceCost: z.number(),
+  insuranceBirth: z.string(),
+  contractInsurance: z.string(),
+  returnType: z.string(),
+})
+type RegisterHealthInsuranceProps = {
   isUpdate?: boolean
 }
-const formSchema = z.object({
-  nameService: z.string(),
-  categoryService: z.string(),
-  timeToService: z.string(),
-  obsToProfessional: z.string(),
-  obsToPatient: z.string(),
-  serviceDescription: z.string(),
-  ToolsToServices: z.array(z.string()),
-  examsNecessary: z.array(z.string()),
-  serviceCost: z.number(),
-  salesPriceService: z.number(),
-})
 
-export const CreateService = ({ isUpdate }: createProps) => {
+export const RegisterHealthInsurance = ({
+  isUpdate,
+}: RegisterHealthInsuranceProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {},
@@ -60,55 +58,6 @@ export const CreateService = ({ isUpdate }: createProps) => {
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values)
   }
-  function generateTimeOptions(
-    startMinute: number,
-    endMinute: number,
-    interval: number,
-  ) {
-    const options = []
-
-    for (let i = startMinute; i <= endMinute; i += interval) {
-      const hour = Math.floor(i / 60)
-        .toString()
-        .padStart(2, '0')
-      const minute = (i % 60).toString().padStart(2, '0')
-      const time = `${hour}h${minute}`
-
-      options.push({
-        value: i,
-        label: time, // Exibe o tempo formatado como hh:mm
-      })
-    }
-
-    return options
-  }
-
-  const options = generateTimeOptions(30, 1410, 30)
-
-  const [toolsTags, setToolsTags] = useState<string[]>([])
-
-  function onToolsTagAdded(tag: string) {
-    if (toolsTags.includes(tag)) return
-
-    setToolsTags((prevTags) => [...prevTags, tag])
-  }
-
-  function deleteToolsTag(tag: string) {
-    setToolsTags((prevTags) => prevTags.filter((prevTag) => prevTag !== tag))
-  }
-
-  const [examsTags, setExamsTags] = useState<string[]>([])
-
-  function onExamsTagAdded(tag: string) {
-    if (examsTags.includes(tag)) return
-
-    setExamsTags((prevTags) => [...prevTags, tag])
-  }
-
-  function deleteExamsTag(tag: string) {
-    setExamsTags((prevTags) => prevTags.filter((prevTag) => prevTag !== tag))
-  }
-
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -118,29 +67,30 @@ export const CreateService = ({ isUpdate }: createProps) => {
           </Card>
         ) : (
           <Button className="px-3 py-1 rounded-xl text-white">
-            Cadastrar serviço
+            Cadastrar convênio
           </Button>
         )}
       </DialogTrigger>
       <DialogContent className=" w-[53em]">
         <DialogHeader>
           <DialogTitle className="font-bold text-sm leading-none ">
-            Cadastro de Serviço
+            Cadastro de convênio
           </DialogTitle>
           <Separator orientation="horizontal" className="my-1 " />
-          <DialogDescription className="text-xs ">
-            Preencha os campos abaixo para cadastrar o serviço
-          </DialogDescription>
         </DialogHeader>
+
+        <DialogDescription className="text-xs mb-3">
+          Preencha os campos abaixo para cadastrar um convênio
+        </DialogDescription>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
             className=" gap-2 w-full"
           >
-            <div className="flex w-full gap-4">
+            <div className="flex w-full gap-4 mb-2">
               <FormField
                 control={form.control}
-                name="nameService"
+                name="productName"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-sm font-bold">
@@ -155,7 +105,7 @@ export const CreateService = ({ isUpdate }: createProps) => {
               />
               <FormField
                 control={form.control}
-                name="categoryService"
+                name="categoryProduct"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-sm font-bold">
@@ -173,10 +123,10 @@ export const CreateService = ({ isUpdate }: createProps) => {
                 )}
               />
             </div>
-            <div className="flex w-full gap-4">
+            <div className="flex w-full gap-4 mb-2">
               <FormField
                 control={form.control}
-                name="timeToService"
+                name="productInStock"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-sm font-bold">
@@ -184,7 +134,7 @@ export const CreateService = ({ isUpdate }: createProps) => {
                     </FormLabel>
                     <Select>
                       <SelectTrigger className="w-64">
-                        <SelectValue placeholder="01h30" />
+                        <SelectValue placeholder="UNID" />
                       </SelectTrigger>
                       <SelectContent></SelectContent>
                     </Select>
@@ -195,7 +145,7 @@ export const CreateService = ({ isUpdate }: createProps) => {
 
               <FormField
                 control={form.control}
-                name="serviceCost"
+                name="productCost"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-sm font-bold">
@@ -212,7 +162,7 @@ export const CreateService = ({ isUpdate }: createProps) => {
               />
               <FormField
                 control={form.control}
-                name="salesPriceService"
+                name="salesProductService"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-sm font-bold">
@@ -228,7 +178,7 @@ export const CreateService = ({ isUpdate }: createProps) => {
                 )}
               />
             </div>
-            <div className="flex w-full gap-4">
+            <div className="flex w-full gap-4 mb-2">
               <FormField
                 control={form.control}
                 name="obsToProfessional"
@@ -288,99 +238,11 @@ export const CreateService = ({ isUpdate }: createProps) => {
                 )}
               />
             </div>
-            <div className="flex w-full gap-4 ">
-              <FormField
-                control={form.control}
-                name="ToolsToServices"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-sm font-bold">
-                      Instrumentos para o serviço
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="Pesquisar instrumentos"
-                        className="w-64"
-                        {...field}
-                        onKeyPress={(event) => {
-                          if (event.key === 'Enter') {
-                            onToolsTagAdded(event.currentTarget.value)
-                          }
-                        }}
-                      />
-                    </FormControl>
-                    <div className=" gap-2 max-w-64 flex h-11 flex-wrap py-1">
-                      {toolsTags.map((tag) => (
-                        <Card
-                          key={tag}
-                          className="rounded-3xl border flex items-center justify-between
-                            gap-1 max-w-32 px-3 py-1"
-                        >
-                          <p className="text-sm ">{tag}</p>
-                          <div className="w-full">
-                            <Card
-                              className="rounded-full border h-6 w-6 text-center hover:bg-primary hover:font-light hover:text-white  cursor-pointer"
-                              onClick={() => deleteToolsTag(tag)}
-                            >
-                              <p className="font-bold text-xs m-1">X</p>
-                            </Card>
-                          </div>
-                        </Card>
-                      ))}
-                    </div>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="examsNecessary"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-sm font-bold">
-                      Exames necessários
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="Pesquisar Exames"
-                        className="w-64"
-                        {...field}
-                        onKeyPress={(event) => {
-                          if (event.key === 'Enter') {
-                            onExamsTagAdded(event.currentTarget.value)
-                          }
-                        }}
-                      />
-                    </FormControl>
-                    <div className=" gap-2 max-w-64 flex h-11 flex-wrap py-1">
-                      {examsTags.map((tag) => (
-                        <Card
-                          key={tag}
-                          className="rounded-3xl border flex items-center justify-between
-                            gap-1 max-w-32 px-3 py-1"
-                        >
-                          <p className="text-sm ">{tag}</p>
-                          <div className="w-full">
-                            <Card
-                              className="rounded-full border h-6 w-6 text-center hover:bg-primary hover:font-light hover:text-white  cursor-pointer"
-                              onClick={() => deleteExamsTag(tag)}
-                            >
-                              <p className="font-bold text-xs m-1">X</p>
-                            </Card>
-                          </div>
-                        </Card>
-                      ))}
-                    </div>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
           </form>
         </Form>
-        <DialogFooter>
-          <Button className="px-5 py-2 rounded-xl text-white" type="submit">
-            Cadastrar
+        <DialogFooter className="flex  items-center w-full flex-none mt-4">
+          <Button className="px-7 py-3 rounded-xl text-white" type="submit">
+            Salvar
           </Button>
         </DialogFooter>
       </DialogContent>
