@@ -85,19 +85,19 @@ export const RegisterHealthInsurance = ({
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className=" gap-2 w-full"
+            className=" gap-1 w-full flex items-center justify-center"
           >
-            <div className="flex w-full gap-4 mb-2">
+            <div className="flex w-full gap-4 mb-2 flex-col">
               <FormField
                 control={form.control}
-                name="productName"
+                name="insuranceName"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-sm font-bold">
-                      Nome do serviço
+                      Nome do convênio
                     </FormLabel>
                     <FormControl>
-                      <Input placeholder="nome " className="w-64" {...field} />
+                      <Input placeholder="nome" className="w-64" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -105,15 +105,15 @@ export const RegisterHealthInsurance = ({
               />
               <FormField
                 control={form.control}
-                name="categoryProduct"
+                name="insuranceCost"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-sm font-bold">
-                      Categoria do serviço
+                      custo do convênio
                     </FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Categoria do serviço "
+                        placeholder="R$ 1.000,00"
                         className="w-64"
                         {...field}
                       />
@@ -122,19 +122,58 @@ export const RegisterHealthInsurance = ({
                   </FormItem>
                 )}
               />
-            </div>
-            <div className="flex w-full gap-4 mb-2">
+
               <FormField
                 control={form.control}
-                name="productInStock"
+                name="categoryInsurance"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-sm font-bold">
-                      Tempo para realizar o serviço
+                      Tipo de retorno
                     </FormLabel>
                     <Select>
                       <SelectTrigger className="w-64">
-                        <SelectValue placeholder="UNID" />
+                        <SelectValue placeholder="Sem retorno" />
+                      </SelectTrigger>
+                      <SelectContent></SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="flex w-full gap-4 mb-2 flex-col">
+              <FormField
+                control={form.control}
+                name="insuranceBirth"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-sm font-bold">
+                      Aniversário do convênio
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="03/02/2024 "
+                        className="w-64"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="returnType"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-sm font-bold">
+                      Categoria do convênio
+                    </FormLabel>
+                    <Select>
+                      <SelectTrigger className="w-64">
+                        <SelectValue placeholder="Tipo de convênio" />
                       </SelectTrigger>
                       <SelectContent></SelectContent>
                     </Select>
@@ -145,94 +184,17 @@ export const RegisterHealthInsurance = ({
 
               <FormField
                 control={form.control}
-                name="productCost"
+                name="contractInsurance"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-sm font-bold">
-                      Preço custo do serviço
+                      contrato do convênio
                     </FormLabel>
                     <Input
-                      placeholder="R$ 0.000,00 "
+                      placeholder="Arquivo PDF "
                       className="w-64"
                       {...field}
                     />
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="salesProductService"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-sm font-bold">
-                      Preço de venda do serviço
-                    </FormLabel>
-                    <Input
-                      placeholder="R$ 0.000,00 "
-                      className="w-64"
-                      {...field}
-                    />
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-            <div className="flex w-full gap-4 mb-2">
-              <FormField
-                control={form.control}
-                name="obsToProfessional"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-sm font-bold">
-                      Observação para os profissionais
-                    </FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder="Escreva a observação"
-                        className="w-64"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="obsToPatient"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-sm font-bold">
-                      Observação para os pacientes
-                    </FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder="Escreva a observação"
-                        className="w-64"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="serviceDescription"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-sm font-bold">
-                      Descrição do serviço
-                    </FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder="Escreva a observação"
-                        className="w-64"
-                        {...field}
-                      />
-                    </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -242,7 +204,7 @@ export const RegisterHealthInsurance = ({
         </Form>
         <DialogFooter className="flex  items-center w-full flex-none mt-4">
           <Button className="px-7 py-3 rounded-xl text-white" type="submit">
-            Salvar
+            Cadastrar{' '}
           </Button>
         </DialogFooter>
       </DialogContent>

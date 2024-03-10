@@ -85,55 +85,43 @@ export default function HealthInsurance() {
           </div>
           <ScrollArea className="flex flex-wrap justify-center container my-6 h-[450px] space-x-2">
             <div className="flex flex-wrap mx-3 gap-5 justify-center">
-              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md">
+              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md flex items-center">
                 <img src="imgs/companies/amil-logo.svg" alt="amil logo" />
               </Card>
-              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md">
+              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md flex items-center">
                 <img src="imgs/companies/bradesco-logo.svg" alt="amil logo" />
               </Card>
-              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md">
+              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md flex items-center">
                 <img src="imgs/companies/unimed-logo.svg" alt="amil logo" />
               </Card>
-              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md">
+              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md flex items-center">
                 <img src="imgs/companies/HDI-logo.svg" alt="amil logo" />
               </Card>
-              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md">
+              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md flex items-center">
                 <img src="imgs/companies/metlife.svg" alt="amil logo" />
               </Card>
-              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md">
+              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md flex items-center">
                 <img src="imgs/companies/sulAmerica-logo.svg" alt="amil logo" />
               </Card>
-              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md">
+              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md flex items-center">
                 <img
                   src="imgs/companies/portoSeguro-logo.svg"
                   alt="amil logo"
                 />
               </Card>
-              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md">
+              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md flex items-center">
                 <img src="imgs/companies/liberty-logo.svg" alt="amil logo" />
               </Card>
-              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md">
+              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md flex items-center">
                 <img src="imgs/companies/aliazzan-logo.png" alt="amil logo" />
               </Card>
-              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md">
+              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md flex items-center">
                 <img src="imgs/companies/amil-logo.svg" alt="amil logo" />
               </Card>
-              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md">
+              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md flex items-center">
                 <img src="imgs/companies/amil-logo.svg" alt="amil logo" />
               </Card>
-              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md">
-                <img src="imgs/companies/amil-logo.svg" alt="amil logo" />
-              </Card>
-              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md">
-                <img src="imgs/companies/amil-logo.svg" alt="amil logo" />
-              </Card>
-              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md">
-                <img src="imgs/companies/amil-logo.svg" alt="amil logo" />
-              </Card>
-              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md">
-                <img src="imgs/companies/amil-logo.svg" alt="amil logo" />
-              </Card>
-              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md">
+              <Card className="px-4 py-16 max-w-40 w-full md:w-1/2 shadow-md  flex items-center">
                 <img src="imgs/companies/amil-logo.svg" alt="amil logo" />
               </Card>
             </div>
