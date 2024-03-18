@@ -28,19 +28,19 @@ export default function AgendamentoPage() {
   const handleDayClick = () => console.log(date)
 
   return (
-    <div className="w-full flex overflow-y-hidden">
+    <div className="w-full flex overflow-y-hidden justify-center items-center bg-auto bg-no-repeat bg-[url('/imgs/rouded-blue.svg')] h-[88vh]">
       <div className="flex items-center z-10">
         <Calendar
           mode="single"
           selected={date}
           onSelect={setDate}
-          className="rounded-md border bg-white"
+          className="rounded-md border bg-white shadow-xl"
           onDayClick={handleDayClick}
         />
       </div>
       <div className="w-full flex item-center justify-center">
         <div className="w-[642px] z-10">
-          <Card className="w-full flex justify-between item-center py-4 px-3 rounded-2xl mb-6">
+          <Card className="w-full flex justify-between item-center py-4 px-3 rounded-2xl mb-6 shadow-xl">
             <div>
               <p className="text-sm font-bold">
                 Agendar atendimento médico para pacientes
@@ -135,11 +135,6 @@ export default function AgendamentoPage() {
           </Card>
           <ScheduleCalendar />
         </div>
-        <img
-          src="/imgs/rouded-blue.svg"
-          alt=""
-          className="absolute z-0 h-[700px]"
-        />
       </div>
     </div>
   )

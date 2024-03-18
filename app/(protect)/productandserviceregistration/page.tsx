@@ -10,7 +10,7 @@ export default function CadastroProdutosEServico() {
   return (
     <div className="flex flex-col w-full items-center justify-center">
       <div className="w-full gap-4 flex pb-5 justify-center">
-        <Card className="w-[500px] h-[300px] max-xl:h-[280px] max-xl:w-[450px] rounded-2xl max-xl:text-[10px] flex flex-col bg-[url('/imgs/lab2.webp')] justify-between">
+        <Card className="w-[500px] h-[300px] max-xl:h-[280px] max-xl:w-[450px] rounded-2xl max-xl:text-[10px] flex flex-col bg-[url('/imgs/lab2.webp')] justify-between shadow-xl">
           <div className=" w-full px-3 pt-2 flex  justify-between items-center bg-gradient-to-b from-white to-transparent rounded-2xl">
             <img
               src="/imgs/MiND-logo.png"
@@ -39,7 +39,7 @@ export default function CadastroProdutosEServico() {
             <CreateService />
           </div>
         </Card>
-        <Card className="w-[500px] h-[300px] max-xl:h-[280px] max-xl:w-[450px] rounded-2xl max-xl:text-[10px] flex flex-col bg-[url('/imgs/lab.webp')] justify-between ">
+        <Card className="w-[500px] h-[300px] max-xl:h-[280px] max-xl:w-[450px] rounded-2xl max-xl:text-[10px] flex flex-col bg-[url('/imgs/lab.webp')] justify-between  shadow-xl">
           <div className=" w-full px-3 pt-2 flex  justify-between items-center bg-gradient-to-b from-white to-transparent pb-5 rounded-2xl">
             <img
               src="/imgs/MiND-logo.png"
@@ -70,11 +70,11 @@ export default function CadastroProdutosEServico() {
         </Card>
       </div>
       <div className="w-full flex gap-4 justify-center">
-        <ScrollArea className="w-[500px]  h-[250px] max-xl:h-[200px] max-xl:w-[450px] rounded-2xl  bg-white ">
+        <ScrollArea className="w-[500px]  h-[250px] max-xl:h-[200px] max-xl:w-[450px]  bg-white  shadow-xl">
           <h1 className="pl-5 py-3 font-semibold">Serviços Cadastrados</h1>
           {Array.from({ length: 15 }).map((_, index) => (
             <Card
-              className="flex px-3 py-2 mx-5 justify-between items-center mb-4"
+              className="flex px-3 py-2 mx-5 justify-between items-center mb-4 shadow-md"
               key={index}
             >
               <div className="flex w-full gap-1 items-center">
@@ -85,13 +85,14 @@ export default function CadastroProdutosEServico() {
                 </div>
                 <div>
                   <h1 className="text-sm leading-none font-semibold">
-                    Nome do convênio
+                    Nome do Produto
                   </h1>
                   <p className="text-xs ">
-                    Descritivo informativo sobre o convênio
+                    Descritivo informativo sobre o produto
                   </p>
                 </div>
               </div>
+
               <div>
                 <CreateService isUpdate={true} />
               </div>
@@ -99,11 +100,11 @@ export default function CadastroProdutosEServico() {
           ))}
         </ScrollArea>
 
-        <ScrollArea className="w-[500px] mx-xl:w-40 h-[250px] max-xl:h-[200px] max-xl:w-[450px] rounded-2xl  bg-white pr-3 ">
+        <ScrollArea className="w-[500px] mx-xl:w-40 h-[250px] max-xl:h-[200px] max-xl:w-[450px]  bg-white pr-3  shadow-xl">
           <h1 className="pl-5 py-3 font-semibold">Produtos Cadastrados</h1>
           {Array.from({ length: 15 }).map((_, index) => (
             <Card
-              className="flex px-3 py-2 mx-5 justify-between items-center mb-4"
+              className="flex px-3 py-2 mx-5 justify-between items-center mb-4 shadow-md"
               key={index}
             >
               <div className="flex w-full gap-1 items-center">

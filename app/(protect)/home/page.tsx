@@ -21,7 +21,6 @@ import {
 const HomePage = () => {
   const today = new Date()
 
-  const [tags, setTags] = useState<string[]>([])
   const [isBodyRefLoaded, setIsBodyRefLoaded] = useState(false)
 
   const options = {
@@ -64,7 +63,7 @@ const HomePage = () => {
           </p>
         </div>
         <div className="my-3 flex gap-3 ">
-          <Card className="h-64 w-40 rounded-2xl p-4 flex flex-col justify-between max-xl:w-32 max-xl:h-40">
+          <Card className="h-64 w-40 rounded-2xl p-4 flex flex-col justify-between max-xl:w-32 max-xl:h-40 shadow-xl">
             <p className="text-sm max-xl:text-[10px]">
               Meta: <span className="text-primary font-bold ">Faturamento</span>
             </p>
@@ -77,6 +76,20 @@ const HomePage = () => {
                 R$ 1500.000,00
               </p>
             </div>
+            <div>
+              <div className="flex justify-between items-center">
+                <p className="text-secondary-gray text-[10px]">
+                  Pessoas atendidas
+                </p>
+                <p className="font-bold text-[10px]">1472</p>
+              </div>
+              <div className="flex justify-between items-center">
+                <p className="text-secondary-gray text-[10px]">
+                  Ticket médio (R$):
+                </p>
+                <p className="font-bold text-[10px]"> 150,00</p>
+              </div>
+            </div>
             <Card className="rounded-full bg-secondary-white py-1 px-2 flex items-center">
               <img src="/imgs/arrow.svg" alt="" className="w-6" />
               <p className="ml-2 text-xs font-bold max-xl:text-[10px] ">
@@ -84,7 +97,7 @@ const HomePage = () => {
               </p>
             </Card>
           </Card>
-          <Card className="h-64 w-40 rounded-2xl p-4 flex flex-col justify-between max-xl:w-32 max-xl:h-40">
+          <Card className="h-64 w-40 rounded-2xl p-4 flex flex-col justify-between max-xl:w-32 max-xl:h-40 shadow-xl">
             <p className="text-sm max-xl:text-[10px]">
               Meta: <span className="text-primary font-bold ">Faturamento</span>
             </p>
@@ -97,6 +110,20 @@ const HomePage = () => {
                 R$ 1500.000,00
               </p>
             </div>
+            <div>
+              <div className="flex justify-between items-center">
+                <p className="text-secondary-gray text-[10px]">
+                  Pessoas atendidas
+                </p>
+                <p className="font-bold text-[10px]">1472</p>
+              </div>
+              <div className="flex justify-between items-center">
+                <p className="text-secondary-gray text-[10px]">
+                  Ticket médio (R$):
+                </p>
+                <p className="font-bold text-[10px]"> 150,00</p>
+              </div>
+            </div>
             <Card className="rounded-full bg-secondary-white py-1 px-2 flex items-center">
               <img src="/imgs/arrow.svg" alt="" className="w-6" />
               <p className="ml-2 text-xs font-bold max-xl:text-[10px] ">
@@ -105,7 +132,7 @@ const HomePage = () => {
             </Card>
           </Card>
         </div>
-        <Card className="flex flex-col py-4 rounded-3xl">
+        <Card className="flex flex-col py-4 rounded-3xl shadow-xl">
           <div className=" ml-3 flex pb-1">
             <img src="/imgs/dot.svg" alt="" />
             <h3 className="font-bold text-sm ml-1 max-xl:text-xs">
@@ -121,7 +148,7 @@ const HomePage = () => {
       </div>
 
       <div
-        className="w-full h-screen relative bg-[url('/imgs/body-home.png')] bg-no-repeat bg-cover bg-center bg-red-500"
+        className="w-full h-screen relative bg-[url('/imgs/body-home.png')] bg-no-repeat bg-cover bg-center bg-red-500 "
         ref={bodyRef}
       >
         {isBodyRefLoaded && (
@@ -323,7 +350,7 @@ const HomePage = () => {
       </div>
       <div className="w-full flex flex-col items-end mr-4">
         <div className="flex gap-3">
-          <Card className="w-56 mx-xl:w-40 max-xl:h-72 rounded-2xl max-xl:text-[10px] ">
+          <Card className="w-56 mx-xl:w-40 max-xl:h-72 rounded-2xl max-xl:text-[10px] shadow-xl ">
             <div className="flex justify-between p-4 items-center">
               <img
                 src="/imgs/MiND-logo.png"
@@ -364,7 +391,7 @@ const HomePage = () => {
               </CarouselContent>
             </Carousel>
           </Card>
-          <Card className="w-56 mx-xl:w-40 max-xl:h-72 rounded-2xl max-xl:text-[10px]">
+          <Card className="w-56 mx-xl:w-40 max-xl:h-72 rounded-2xl max-xl:text-[10px] shadow-xl">
             <div className="flex justify-between p-4 items-center">
               <img
                 src="/imgs/MiND-logo.png"
@@ -398,7 +425,7 @@ const HomePage = () => {
             </Card>
           </Card>
         </div>
-        <ScheduleCalendar className="w-[458px] mt-3" date={today} />
+        <ScheduleCalendar className="w-[458px] mt-3 shadow-xl" date={today} />
       </div>
     </div>
   )

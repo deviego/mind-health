@@ -12,6 +12,8 @@ import {
 import { useEffect, useState } from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { cn } from '@/lib/utils'
+import { HoverCard, HoverCardContent, HoverCardTrigger } from './ui/hover-card'
+import { Stethoscope } from 'lucide-react'
 
 type Consultation = {
   doctorName: string
@@ -19,6 +21,12 @@ type Consultation = {
   startTime: string
   endTime: string
   typeService: string
+  serviceName: string
+  serviceDescription: string
+
+  birthDate: string
+  CPF: string
+  phoneNumber: string
 }
 
 type Doctor = {
@@ -42,6 +50,12 @@ const doctors: Doctor[] = [
         startTime: '08:00',
         endTime: '10:00',
         typeService: 'Consulta',
+
+        serviceName: 'Nome do serviço',
+        serviceDescription: 'descrição do serviço',
+        birthDate: '21/03/2024',
+        CPF: '000.000.000-00',
+        phoneNumber: '+55 21 91234-5678',
       },
       {
         doctorName: 'Dr. Silva',
@@ -49,6 +63,11 @@ const doctors: Doctor[] = [
         startTime: '11:00',
         endTime: '12:00',
         typeService: 'Operação',
+        serviceName: 'Nome do serviço',
+        serviceDescription: 'descrição do serviço',
+        birthDate: '21/03/2024',
+        CPF: '000.000.000-00',
+        phoneNumber: '+55 21 91234-5678',
       },
       {
         doctorName: 'Dr. Silva',
@@ -56,6 +75,11 @@ const doctors: Doctor[] = [
         startTime: '14:00',
         endTime: '16:00',
         typeService: 'Ocupado',
+        serviceName: 'Nome do serviço',
+        serviceDescription: 'descrição do serviço',
+        birthDate: '21/03/2024',
+        CPF: '000.000.000-00',
+        phoneNumber: '+55 21 91234-5678',
       },
     ],
   },
@@ -68,6 +92,11 @@ const doctors: Doctor[] = [
         startTime: '07:00',
         endTime: '10:00',
         typeService: 'Consulta',
+        serviceName: 'Nome do serviço',
+        serviceDescription: 'descrição do serviço',
+        birthDate: '21/03/2024',
+        CPF: '000.000.000-00',
+        phoneNumber: '+55 21 91234-5678',
       },
       {
         doctorName: 'Dr. Souza',
@@ -75,6 +104,11 @@ const doctors: Doctor[] = [
         startTime: '11:00',
         endTime: '13:00',
         typeService: 'Operação',
+        serviceName: 'Nome do serviço',
+        serviceDescription: 'descrição do serviço',
+        birthDate: '21/03/2024',
+        CPF: '000.000.000-00',
+        phoneNumber: '+55 21 91234-5678',
       },
       {
         doctorName: 'Dr. Souza',
@@ -82,6 +116,11 @@ const doctors: Doctor[] = [
         startTime: '14:00',
         endTime: '20:00',
         typeService: 'Ocupado',
+        serviceName: 'Nome do serviço',
+        serviceDescription: 'descrição do serviço',
+        birthDate: '21/03/2024',
+        CPF: '000.000.000-00',
+        phoneNumber: '+55 21 91234-5678',
       },
     ],
   },
@@ -119,7 +158,10 @@ export const ScheduleCalendar: React.FC<Props> = ({
 
   return (
     <Card
-      className={cn('flex items-center justify-center overflow', className)}
+      className={cn(
+        'flex items-center justify-center overflow shadow-xl',
+        className,
+      )}
     >
       <Table>
         <TableHeader>
@@ -159,21 +201,76 @@ export const ScheduleCalendar: React.FC<Props> = ({
                       )
                       .map((consultation, consultationIndex) => (
                         <div key={consultationIndex} className="relative">
-                          <Card
-                            className="absolute -top-4 left-0 font-semibold bg-primary text-white text-start text-xs rounded-2xl py-2 pl-1"
-                            style={{
-                              width: `${calculateWidth(
-                                consultation.startTime,
-                                consultation.endTime,
-                              )}px`,
-                              marginLeft: `${calculateMarginLeft(
-                                hour,
-                                consultation.startTime,
-                              )}px`,
-                            }}
-                          >
-                            {consultation.typeService}
-                          </Card>
+                          <HoverCard>
+                            <HoverCardTrigger>
+                              <Card
+                                className="absolute -top-4 left-0 font-semibold bg-primary text-white text-start text-xs rounded-2xl py-2 pl-1"
+                                style={{
+                                  width: `${calculateWidth(
+                                    consultation.startTime,
+                                    consultation.endTime,
+                                  )}px`,
+                                  marginLeft: `${calculateMarginLeft(
+                                    hour,
+                                    consultation.startTime,
+                                  )}px`,
+                                }}
+                              >
+                                {consultation.typeService}
+                              </Card>
+                            </HoverCardTrigger>
+                            <HoverCardContent className="shadow-xl opacity-75">
+                              <div className="">
+                                <Card className="flex bg-transparent gap-3 border border-white items-center p-2">
+                                  <div>
+                                    <Card className="rounded-full p-2 text-white bg-ellipse flex items-center">
+                                      <Stethoscope className="w-[14px] h-[14px]" />
+                                    </Card>
+                                  </div>
+                                  <div>
+                                    <h1 className="text-sm leading-none font-semibold text-white">
+                                      {consultation.serviceName}
+                                    </h1>
+                                    <p className="text-xs text-white">
+                                      {consultation.serviceDescription}
+                                    </p>
+                                  </div>
+                                </Card>
+                                <div className="mt-3 ">
+                                  <div className="flex items-center justify-between mb-1">
+                                    <p className="text-xs text-white">
+                                      Paciente:
+                                    </p>
+                                    <p className="text-xs font-bold text-white text-end">
+                                      {consultation.patient}
+                                    </p>
+                                  </div>
+                                  <div className="flex items-center justify-between mb-1">
+                                    <p className="text-xs text-white">
+                                      Nascido em:
+                                    </p>
+                                    <p className="text-xs text-white">
+                                      {consultation.birthDate}
+                                    </p>
+                                  </div>
+                                  <div className="flex items-center justify-between mb-1">
+                                    <p className="text-xs text-white">
+                                      Numero de telefone:
+                                    </p>
+                                    <p className="text-xs text-white">
+                                      {consultation.phoneNumber}
+                                    </p>
+                                  </div>
+                                  <div className="flex items-center justify-between mb-1">
+                                    <p className="text-xs text-white">CPF:</p>
+                                    <p className="text-xs text-white">
+                                      {consultation.CPF}
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </HoverCardContent>
+                          </HoverCard>
                         </div>
                       ))}
                   </TableCell>

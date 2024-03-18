@@ -28,13 +28,14 @@ import {
 import { Progress } from '@/components/ui/progress'
 
 import { NewAppointmentsAtTheClinic } from '../_components/newAppointmentsAtTheClinic'
+import Link from 'next/link'
 
 export default function FinanceiroPage() {
   return (
     <div className="fex flex-col w-full container">
       <div className="flex w-full justify-between ">
         <div className="flex gap-3">
-          <Card className="flex items-center px-3 py-1 gap-1">
+          <Card className="flex items-center px-3 py-1 gap-1 shadow-xl">
             <div>
               <Card className="rounded-full p-2 flex items-center text-white bg-primary">
                 <TrendingUp />
@@ -45,7 +46,7 @@ export default function FinanceiroPage() {
               <h1 className="font-bold text-lg">R$ 190.100,00</h1>
             </div>
           </Card>
-          <Card className="flex items-center px-3 py-1 gap-1">
+          <Card className="flex items-center px-3 py-1 gap-1 shadow-xl">
             <div>
               <Card className="rounded-full p-2 flex items-center text-white bg-orange-400">
                 <Book />
@@ -56,7 +57,7 @@ export default function FinanceiroPage() {
               <h1 className="font-bold text-lg">R$ 40.300,00</h1>
             </div>
           </Card>
-          <Card className="flex items-center px-3 py-1 gap-1">
+          <Card className="flex items-center px-3 py-1 gap-1 shadow-xl">
             <div>
               <Card className="rounded-full p-2 flex items-center text-white  bg-green-500">
                 <DollarSign />
@@ -67,7 +68,7 @@ export default function FinanceiroPage() {
               <h1 className="font-bold text-lg text-green-500">R$ 88.570,00</h1>
             </div>
           </Card>
-          <Card className="flex items-center px-3 py-1 gap-1">
+          <Card className="flex items-center px-3 py-1 gap-1 shadow-xl">
             <div>
               <Card className="rounded-full p-2 flex items-center text-white bg-red-500">
                 <TrendingDown />
@@ -88,7 +89,7 @@ export default function FinanceiroPage() {
           <NavigationMenu className="w-full">
             <NavigationMenuList className="w-full">
               <NavigationMenuItem className="w-full">
-                <NavigationMenuTrigger className="bg-white w-full flex gap-1 items-center  rounded-3xl ">
+                <NavigationMenuTrigger className="bg-white w-full flex gap-1 items-center  rounded-3xl shadow-xl ">
                   visualizar:
                   <span className="font-bold text-[10px]">Último 30 dias</span>
                 </NavigationMenuTrigger>
@@ -115,15 +116,16 @@ export default function FinanceiroPage() {
         </div>
       </div>
       <div className="flex w-full mt-8 gap-3">
-        <div className="w-full flex gap-4 ">
-          <ScrollArea className="w-[400px]  h-[220px] max-xl:h-[300px] max-xl:w-[450px] rounded-2xl  bg-white ">
-            <div className="flex justify-between mx-1 items-center">
-              <h1 className="pl-5 py-3 font-semibold">Serviços Cadastrados</h1>
-              <p className="text-[#0093E5] font-semibold text-xs mr-4">
+        <Card className=" gap-4 shadow-xl rounded-2xl ">
+          <div className="flex justify-between mx-1 items-center">
+            <h1 className="pl-5 py-3 font-semibold">Serviços Cadastrados</h1>
+            <Link href="/transactions">
+              <p className="text-primary font-semibold text-xs mr-4">
                 Acessar gestão de recebimento
               </p>
-            </div>
-
+            </Link>
+          </div>
+          <ScrollArea className="w-[400px]  h-[220px] max-xl:h-[300px] max-xl:w-[450px]  rounded-md bg-white  shadow-xl">
             {Array.from({ length: 15 }).map((_, index) => (
               <Card
                 className="flex px-3 py-2 mx-5 justify-between items-center mb-2 border-none"
@@ -148,16 +150,17 @@ export default function FinanceiroPage() {
               </Card>
             ))}
           </ScrollArea>
-        </div>
-        <div className="w-full flex gap-4 ">
-          <ScrollArea className="w-[450px] h-[220px] max-xl:h-[300px] max-xl:w-[450px] rounded-2xl  bg-white ">
-            <div className="flex justify-between mx-1 items-center">
-              <h1 className="pl-5 py-3 font-semibold">Serviços Cadastrados</h1>
+        </Card>
+        <Card className="gap-4 shadow-xl rounded-2xl ">
+          <div className="flex justify-between mx-1 items-center">
+            <h1 className="pl-5 py-3 font-semibold">Serviços Cadastrados</h1>
+            <Link href="/transactions">
               <p className="text-primary font-semibold text-xs mr-4">
                 Acessar gestão de pagamentos
               </p>
-            </div>
-
+            </Link>
+          </div>
+          <ScrollArea className="w-[450px] h-[220px] max-xl:h-[300px] max-xl:w-[450px] rounded-b-md  bg-white shadow-xl ">
             {Array.from({ length: 15 }).map((_, index) => (
               <Card
                 className="flex px-3 py-2 mx-5 justify-between items-center mb-2 border-none"
@@ -182,40 +185,61 @@ export default function FinanceiroPage() {
               </Card>
             ))}
           </ScrollArea>
-        </div>
-        <div className="w-full flex gap-4 ">
-          <ScrollArea className="w-[300px]  h-[220px] max-xl:h-[300px] max-xl:w-[450px] rounded-2xl  bg-white ">
-            <div className="flex justify-between mx-1 items-center">
-              <h1 className="pl-5 py-3 font-semibold">Extratos</h1>
+        </Card>
+        <Card className=" gap-4 shadow-xl rounded-2xl ">
+          <div className="flex justify-between mx-1 items-center">
+            <h1 className="pl-5 py-3 font-semibold">Extratos</h1>
+            <Link href="/transactions">
               <p className="text-primary font-semibold text-xs mr-4">
                 Ver extratos
               </p>
-            </div>
-
+            </Link>
+          </div>
+          <ScrollArea className="w-[300px]  h-[220px] max-xl:h-[300px] max-xl:w-[450px] rounded-md   bg-white shadow-xl ">
             {Array.from({ length: 15 }).map((_, index) => (
-              <Card
-                className="flex px-3 py-2 mx-5 justify-between items-center mb-2 border-none"
-                key={index}
-              >
-                <div className="flex w-full  items-center ">
-                  <div>
-                    <h1 className="text-sm leading-none font-semibold">Nome</h1>
-                    <p className="text-xs ">
-                      Descritivo informativo sobre a transação
-                    </p>
-                    <p className="text-lg font-bold text-red-500">
-                      R$ -1.000,00
-                    </p>
+              <>
+                <Card
+                  className="flex px-3 py-2 mx-5 justify-between items-center mb-2 border-none"
+                  key={index}
+                >
+                  <div className="flex w-full  items-center ">
+                    <div>
+                      <h1 className="text-sm leading-none font-semibold">
+                        Nome
+                      </h1>
+                      <p className="text-xs ">
+                        Descritivo informativo sobre a transação
+                      </p>
+                      <p className="text-lg font-bold text-red-500">
+                        R$ -1.000,00
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </Card>
+                </Card>
+                <Card
+                  className="flex px-3 py-2 mx-5 justify-between items-center mb-2 border-none"
+                  key={index}
+                >
+                  <div className="flex w-full  items-center ">
+                    <div>
+                      <h1 className="text-sm leading-none font-semibold">
+                        Nome
+                      </h1>
+                      <p className="text-xs ">
+                        Descritivo informativo sobre a transação
+                      </p>
+                      <p className="text-lg font-bold">R$ 3.000,00</p>
+                    </div>
+                  </div>
+                </Card>
+              </>
             ))}
           </ScrollArea>
-        </div>
+        </Card>
       </div>
       <div className="flex  mt-3 w-full gap-2">
         <div>
-          <Card>
+          <Card className="shadow-xl px-2 py-2 h-72                                       ">
             <Carousel
               opts={{
                 align: 'start',
@@ -307,7 +331,7 @@ export default function FinanceiroPage() {
             </Carousel>
           </Card>
         </div>
-        <Card className="w-[770px] h-64">
+        <Card className="w-[770px] h-72 shadow-xl px-2 py-2">
           <NewAppointmentsAtTheClinic />
         </Card>
       </div>

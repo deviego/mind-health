@@ -78,6 +78,11 @@ export const NavBar = () => {
               <DropdownMenuItem>
                 <Link href="/healthInsurance">Convênio</Link>
               </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/negotiationandbudgeting">
+                  Negociação e orçamento
+                </Link>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
           <DialogContent className="w-[600px]">
@@ -94,7 +99,7 @@ export const NavBar = () => {
         <NavigationMenu className="w-full">
           <NavigationMenuList className="w-full">
             <NavigationMenuItem className="w-full">
-              <NavigationMenuTrigger className="bg-white w-full flex gap-1 items-center px-4 rounded-3xl h-12">
+              <NavigationMenuTrigger className="bg-white w-full flex gap-1 items-center px-4 rounded-3xl h-12 shadow-xl">
                 <Avatar className="h-8 w-8 mr-2">
                   <AvatarImage
                     src="https://github.com/deviego.png"

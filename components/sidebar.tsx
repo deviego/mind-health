@@ -38,8 +38,8 @@ export const Sidebar = () => {
             <Card
               className={
                 isActive
-                  ? 'p-3 rounded-full bg-primary text-white'
-                  : 'p-3 rounded-full text-secondary-gray'
+                  ? 'p-3 rounded-full bg-primary text-white shadow-xl'
+                  : 'p-3 rounded-full text-secondary-gray shadow-xl'
               }
             >
               {link.icon}
