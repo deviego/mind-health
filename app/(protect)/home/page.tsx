@@ -38,17 +38,14 @@ const HomePage = () => {
     'pt-BR',
     dateTimeFormatOptions as Intl.DateTimeFormatOptions | undefined,
   )
-
-  const plugin = React.useRef(
-    Autoplay({ delay: 20000, stopOnInteraction: true }),
-  )
+  const plugin = useRef(Autoplay({ delay: 20000, stopOnInteraction: true }))
 
   const bodyRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    if (!bodyRef.current) return
-
-    setIsBodyRefLoaded(true)
+    if (bodyRef.current) {
+      setIsBodyRefLoaded(true)
+    }
   }, [bodyRef])
 
   return (
@@ -159,8 +156,8 @@ const HomePage = () => {
                   src="/imgs/bullet.svg"
                   alt="body"
                   style={{
-                    top: `${(11 * (bodyRef.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
-                    left: `${(27 * bodyRef.current?.clientWidth) / 100}px`,
+                    top: `${(15 * (bodyRef.current!.clientHeight + bodyRef.current!.clientWidth)) / 100}px`,
+                    left: `${(27 * bodyRef.current!.clientWidth) / 100}px`,
                   }}
                   className={'absolute'}
                   width={40}
@@ -168,8 +165,8 @@ const HomePage = () => {
               </HoverCardTrigger>
               <HoverCardContent
                 style={{
-                  top: `${(11 * (bodyRef.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
-                  left: `${(27 * bodyRef.current?.clientWidth) / 100}px`,
+                  top: `${(15 * (bodyRef.current!.clientHeight + bodyRef.current!.clientWidth)) / 100}px`,
+                  left: `${(27 * bodyRef.current!.clientWidth) / 100}px`,
                 }}
                 ref={bodyRef}
               >
@@ -198,8 +195,8 @@ const HomePage = () => {
                   src="/imgs/bullet.svg"
                   alt="body"
                   style={{
-                    top: `${(28 * (bodyRef.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
-                    left: `${(78 * bodyRef.current?.clientWidth) / 100}px`,
+                    top: `${(28 * (bodyRef.current!.clientHeight + bodyRef.current!.clientWidth)) / 100}px`,
+                    left: `${(78 * bodyRef.current!.clientWidth) / 100}px`,
                   }}
                   width={40}
                   className={'absolute'}
@@ -207,8 +204,8 @@ const HomePage = () => {
               </HoverCardTrigger>
               <HoverCardContent
                 style={{
-                  top: `${(28 * (bodyRef.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
-                  left: `${(78 * bodyRef.current?.clientWidth) / 100}px`,
+                  top: `${(28 * (bodyRef.current!.clientHeight + bodyRef.current!.clientWidth)) / 100}px`,
+                  left: `${(78 * bodyRef.current!.clientWidth) / 100}px`,
                 }}
                 ref={bodyRef}
               >
@@ -236,8 +233,8 @@ const HomePage = () => {
                   src="/imgs/bullet.svg"
                   alt="body"
                   style={{
-                    top: `${(14 * (bodyRef.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
-                    left: `${(65 * bodyRef.current?.clientWidth) / 100}px`,
+                    top: `${(14 * (bodyRef.current!.clientHeight + bodyRef.current!.clientWidth)) / 100}px`,
+                    left: `${(65 * bodyRef.current!.clientWidth) / 100}px`,
                   }}
                   width={40}
                   className="absolute"
@@ -245,8 +242,8 @@ const HomePage = () => {
               </HoverCardTrigger>
               <HoverCardContent
                 style={{
-                  top: `${(14 * (bodyRef.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
-                  left: `${(0 * bodyRef.current?.clientWidth) / 100}px`,
+                  top: `${(14 * (bodyRef.current!.clientHeight + bodyRef.current!.clientWidth)) / 100}px`,
+                  left: `${(65 * bodyRef.current!.clientWidth) / 100}px`,
                 }}
                 ref={bodyRef}
               >
@@ -274,8 +271,8 @@ const HomePage = () => {
                   src="/imgs/bullet.svg"
                   alt="body"
                   style={{
-                    top: `${(28 * (bodyRef.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
-                    right: `${(78 * bodyRef.current?.clientWidth) / 100}px`,
+                    top: `${(28 * (bodyRef.current!.clientHeight + bodyRef.current!.clientWidth)) / 100}px`,
+                    right: `${(78 * bodyRef.current!.clientWidth) / 100}px`,
                   }}
                   width={40}
                   className={'absolute '}
@@ -283,8 +280,8 @@ const HomePage = () => {
               </HoverCardTrigger>
               <HoverCardContent
                 style={{
-                  top: `${(28 * (bodyRef.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
-                  right: `${(78 * bodyRef.current?.clientWidth) / 100}px`,
+                  top: `${(28 * (bodyRef.current!.clientHeight + bodyRef.current!.clientWidth)) / 100}px`,
+                  right: `${(78 * bodyRef.current!.clientWidth) / 100}px`,
                 }}
                 ref={bodyRef}
               >
@@ -313,8 +310,8 @@ const HomePage = () => {
                   src="/imgs/bullet.svg"
                   alt="body"
                   style={{
-                    top: `${(40 * (bodyRef.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
-                    left: `${(33 * bodyRef.current?.clientWidth) / 100}px`,
+                    top: `${(40 * (bodyRef.current!.clientHeight + bodyRef.current!.clientWidth)) / 100}px`,
+                    left: `${(33 * bodyRef.current!.clientWidth) / 100}px`,
                   }}
                   width={40}
                   className={'absolute'}
@@ -323,8 +320,8 @@ const HomePage = () => {
               <HoverCardContent
                 ref={bodyRef}
                 style={{
-                  top: `${(40 * (bodyRef.current?.clientHeight + bodyRef.current?.clientWidth)) / 100}px`,
-                  left: `${(33 * bodyRef.current?.clientWidth) / 100}px`,
+                  top: `${(40 * (bodyRef.current!.clientHeight + bodyRef.current!.clientWidth)) / 100}px`,
+                  left: `${(33 * bodyRef.current!.clientWidth) / 100}px`,
                 }}
               >
                 <div className="flex items-center gap-3">
