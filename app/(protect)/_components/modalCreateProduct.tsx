@@ -72,7 +72,7 @@ export const CreateProduct = ({ isUpdate }: createProps) => {
       <DialogContent className=" w-[53em]">
         <DialogHeader>
           <DialogTitle className="font-bold text-sm leading-none ">
-            Cadastro de Serviço
+            Cadastro de Produto
           </DialogTitle>
           <Separator orientation="horizontal" className="my-1 " />
         </DialogHeader>
@@ -101,7 +101,7 @@ export const CreateProduct = ({ isUpdate }: createProps) => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-sm font-bold">
-                          Nome do serviço
+                          Nome do Produto
                         </FormLabel>
                         <FormControl>
                           <Input
@@ -120,11 +120,11 @@ export const CreateProduct = ({ isUpdate }: createProps) => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-sm font-bold">
-                          Categoria do serviço
+                          Categoria do Produto
                         </FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="Categoria do serviço "
+                            placeholder="Categoria do Produto "
                             className="w-64"
                             {...field}
                           />
@@ -141,7 +141,7 @@ export const CreateProduct = ({ isUpdate }: createProps) => {
                     render={() => (
                       <FormItem>
                         <FormLabel className="text-sm font-bold">
-                          Tempo para realizar o serviço
+                          Tempo para realizar o Produto
                         </FormLabel>
                         <Select>
                           <SelectTrigger className="w-64">
@@ -160,7 +160,7 @@ export const CreateProduct = ({ isUpdate }: createProps) => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-sm font-bold">
-                          Preço custo do serviço
+                          Preço custo do Produto
                         </FormLabel>
                         <Input
                           placeholder="R$ 0.000,00 "
@@ -177,7 +177,7 @@ export const CreateProduct = ({ isUpdate }: createProps) => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-sm font-bold">
-                          Preço de venda do serviço
+                          Preço de venda do Produto
                         </FormLabel>
                         <Input
                           placeholder="R$ 0.000,00 "
@@ -235,7 +235,7 @@ export const CreateProduct = ({ isUpdate }: createProps) => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-sm font-bold">
-                          Descrição do serviço
+                          Descrição do Produto
                         </FormLabel>
                         <FormControl>
                           <Textarea
@@ -292,7 +292,7 @@ export const CreateProduct = ({ isUpdate }: createProps) => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-sm font-bold">
-                          Nome do serviço
+                          Nome do Produto
                         </FormLabel>
                         <FormControl>
                           <Input
@@ -311,11 +311,11 @@ export const CreateProduct = ({ isUpdate }: createProps) => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-sm font-bold">
-                          Categoria do serviço
+                          Categoria do Produto
                         </FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="Categoria do serviço "
+                            placeholder="Categoria do Produto "
                             className="w-64"
                             {...field}
                           />
@@ -332,7 +332,7 @@ export const CreateProduct = ({ isUpdate }: createProps) => {
                     render={() => (
                       <FormItem>
                         <FormLabel className="text-sm font-bold">
-                          Tempo para realizar o serviço
+                          Tempo para realizar o Produto
                         </FormLabel>
                         <Select>
                           <SelectTrigger className="w-64">
@@ -351,7 +351,7 @@ export const CreateProduct = ({ isUpdate }: createProps) => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-sm font-bold">
-                          Preço custo do serviço
+                          Preço custo do Produto
                         </FormLabel>
                         <Input
                           placeholder="R$ 0.000,00 "
@@ -368,7 +368,7 @@ export const CreateProduct = ({ isUpdate }: createProps) => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-sm font-bold">
-                          Preço de venda do serviço
+                          Preço de venda do Produto
                         </FormLabel>
                         <Input
                           placeholder="R$ 0.000,00 "
@@ -426,7 +426,7 @@ export const CreateProduct = ({ isUpdate }: createProps) => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-sm font-bold">
-                          Descrição do serviço
+                          Descrição do Produto
                         </FormLabel>
                         <FormControl>
                           <Textarea
