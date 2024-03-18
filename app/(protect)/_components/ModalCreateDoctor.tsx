@@ -70,7 +70,7 @@ export const CreateDoctor = () => {
             <div>
               <FormField
                 control={form.control}
-                name="profissionalName"
+                name="professionalName"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-sm font-bold">
