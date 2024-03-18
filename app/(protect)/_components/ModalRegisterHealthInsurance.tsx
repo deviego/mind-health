@@ -30,10 +30,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Pencil, X } from 'lucide-react'
-
-import { Textarea } from '@/components/ui/textarea'
-import { useState } from 'react'
+import { Pencil } from 'lucide-react'
 
 const formSchema = z.object({
   insuranceName: z.string(),
@@ -126,7 +123,7 @@ export const RegisterHealthInsurance = ({
               <FormField
                 control={form.control}
                 name="categoryInsurance"
-                render={({ field }) => (
+                render={() => (
                   <FormItem>
                     <FormLabel className="text-sm font-bold">
                       Tipo de retorno
@@ -166,7 +163,7 @@ export const RegisterHealthInsurance = ({
               <FormField
                 control={form.control}
                 name="returnType"
-                render={({ field }) => (
+                render={() => (
                   <FormItem>
                     <FormLabel className="text-sm font-bold">
                       Categoria do convênio

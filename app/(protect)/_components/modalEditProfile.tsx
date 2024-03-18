@@ -122,7 +122,7 @@ export const EditProfile = () => {
               <FormField
                 control={form.control}
                 name="jobTitle"
-                render={({ field }) => (
+                render={() => (
                   <FormItem>
                     <FormLabel className="text-sm font-bold">
                       Cargo profissonal

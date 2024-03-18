@@ -138,7 +138,7 @@ export const CreateProduct = ({ isUpdate }: createProps) => {
                   <FormField
                     control={form.control}
                     name="productInStock"
-                    render={({ field }) => (
+                    render={() => (
                       <FormItem>
                         <FormLabel className="text-sm font-bold">
                           Tempo para realizar o serviço
@@ -329,7 +329,7 @@ export const CreateProduct = ({ isUpdate }: createProps) => {
                   <FormField
                     control={form.control}
                     name="productInStock"
-                    render={({ field }) => (
+                    render={() => (
                       <FormItem>
                         <FormLabel className="text-sm font-bold">
                           Tempo para realizar o serviço

@@ -1,6 +1,5 @@
 'use client'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import {
@@ -28,11 +27,11 @@ type Doctor = {
   consultations: Consultation[]
 }
 
-interface Props {
-  date?: Date | undefined
-  setDate?: React.Dispatch<React.SetStateAction<Date | undefined>>
-  className?: string
-}
+// interface Props {
+//   date?: Date | undefined
+//   setDate?: React.Dispatch<React.SetStateAction<Date | undefined>>
+//   className?: string
+// }
 
 const doctors: Doctor[] = [
   {
@@ -87,7 +86,7 @@ export default function Profile() {
 
     const consultations = doctors.flatMap((doctor) => doctor.consultations)
     setConsultations(consultations)
-  }, [doctors])
+  }, [])
 
   return (
     <div className="h-full flex w-full justify-center items-center ">

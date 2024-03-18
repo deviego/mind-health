@@ -2,12 +2,9 @@
 
 import { Button } from '@/components/ui/button'
 import {
-  Dialog,
-  DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
   DialogFooter,
 } from '@/components/ui/dialog'
 import {
@@ -106,7 +103,7 @@ export const CreatePatient = () => {
               <FormField
                 control={form.control}
                 name="gender"
-                render={({ field }) => (
+                render={() => (
                   <FormItem>
                     <FormLabel className="text-sm font-bold">Gênero</FormLabel>
                     <Select>

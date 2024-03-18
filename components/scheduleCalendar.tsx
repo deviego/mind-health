@@ -126,11 +126,7 @@ const doctors: Doctor[] = [
   },
 ]
 
-export const ScheduleCalendar: React.FC<Props> = ({
-  date,
-  setDate,
-  className,
-}) => {
+export const ScheduleCalendar: React.FC<Props> = ({ className }) => {
   const hours = Array.from({ length: 16 }, (_, index) => index + 7)
   const [consultations, setConsultations] = useState<Consultation[]>([])
 
@@ -154,7 +150,7 @@ export const ScheduleCalendar: React.FC<Props> = ({
 
     const consultations = doctors.flatMap((doctor) => doctor.consultations)
     setConsultations(consultations)
-  }, [doctors])
+  }, [])
 
   return (
     <Card

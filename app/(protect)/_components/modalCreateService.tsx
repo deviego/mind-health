@@ -30,7 +30,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Pencil, X } from 'lucide-react'
+import { Pencil } from 'lucide-react'
 
 import { Textarea } from '@/components/ui/textarea'
 import { useState } from 'react'
@@ -60,30 +60,28 @@ export const CreateService = ({ isUpdate }: createProps) => {
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values)
   }
-  function generateTimeOptions(
-    startMinute: number,
-    endMinute: number,
-    interval: number,
-  ) {
-    const options = []
+  // function generateTimeOptions(
+  //   startMinute: number,
+  //   endMinute: number,
+  //   interval: number,
+  // ) {
+  //   const options = []
 
-    for (let i = startMinute; i <= endMinute; i += interval) {
-      const hour = Math.floor(i / 60)
-        .toString()
-        .padStart(2, '0')
-      const minute = (i % 60).toString().padStart(2, '0')
-      const time = `${hour}h${minute}`
+  //   for (let i = startMinute; i <= endMinute; i += interval) {
+  //     const hour = Math.floor(i / 60)
+  //       .toString()
+  //       .padStart(2, '0')
+  //     const minute = (i % 60).toString().padStart(2, '0')
+  //     const time = `${hour}h${minute}`
 
-      options.push({
-        value: i,
-        label: time, // Exibe o tempo formatado como hh:mm
-      })
-    }
+  //     options.push({
+  //       value: i,
+  //       label: time, // Exibe o tempo formatado como hh:mm
+  //     })
+  //   }
 
-    return options
-  }
-
-  const options = generateTimeOptions(30, 1410, 30)
+  //   return options
+  // }
 
   const [toolsTags, setToolsTags] = useState<string[]>([])
 
@@ -177,7 +175,7 @@ export const CreateService = ({ isUpdate }: createProps) => {
               <FormField
                 control={form.control}
                 name="timeToService"
-                render={({ field }) => (
+                render={() => (
                   <FormItem>
                     <FormLabel className="text-sm font-bold">
                       Tempo para realizar o serviço

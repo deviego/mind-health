@@ -103,7 +103,7 @@ export const CreateDoctor = () => {
               <FormField
                 control={form.control}
                 name="gender"
-                render={({ field }) => (
+                render={() => (
                   <FormItem>
                     <FormLabel className="text-sm font-bold">Gênero</FormLabel>
                     <Select>
@@ -173,7 +173,7 @@ export const CreateDoctor = () => {
               <FormField
                 control={form.control}
                 name="job"
-                render={({ field }) => (
+                render={() => (
                   <FormItem>
                     <FormLabel className="text-sm font-bold">
                       Seleciona a profissão
