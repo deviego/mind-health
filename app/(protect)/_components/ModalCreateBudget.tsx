@@ -3,7 +3,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -447,7 +446,7 @@ function Step8({ onNext, onPrev }: stepProps) {
     </DialogContent>
   )
 }
-function Step9({ onNext, onPrev }: stepProps) {
+function Step9() {
   return (
     <DialogContent className="w-80">
       <DialogHeader>
@@ -495,10 +494,10 @@ export function CreateBudget() {
     setCurrentStep(currentStep - 1)
   }
 
-  const onSubmit = (data: FormData) => {
-    // Lógica de envio do formulário aqui
-    console.log(data)
-  }
+  // const onSubmit = (data: FormData) => {
+  //   // Lógica de envio do formulário aqui
+  //   console.log(data)
+  // }
 
   return (
     <Dialog>
