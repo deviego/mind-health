@@ -20,6 +20,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Checkbox } from '@/components/ui/checkbox'
+import { Card } from '@/components/ui/card'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -32,8 +33,6 @@ import {
 } from '@/components/ui/form'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-
-import { Card } from '@/components/ui/card'
 
 const formSchema = z.object({
   professionalName: z.string(),
@@ -443,8 +442,8 @@ export function CreateBudget() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   })
-  const [currentStep, setCurrentStep] = useState(1)
   const [isOpen, setIsOpen] = useState(false)
+  const [currentStep, setCurrentStep] = useState(1)
 
   const handleNextStep = () => {
     setCurrentStep(currentStep + 1)

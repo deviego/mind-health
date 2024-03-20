@@ -27,6 +27,7 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { Input } from '@/components/ui/input'
+import { useState } from 'react'
 
 const formSchema = z.object({
   patientName: z.string(),
@@ -43,17 +44,46 @@ const formSchema = z.object({
   complement: z.string().optional(),
 })
 
-export const CreatePatient = () => {
+type stepProps = {
+  onNext?: () => void
+  onPrev?: () => void
+}
+
+const MindCards = ({ onNext, onPrev }: stepProps) => {
+  return (
+    <div>
+      <DialogHeader className="mb-2">
+        <DialogTitle>Criar novo Paciente</DialogTitle>
+        <Separator orientation="horizontal" className="my-1 " />
+        <DialogDescription className="">
+          Preencha os dados correspondente do paciente
+        </DialogDescription>
+      </DialogHeader>
+      <div className="flex justify-between items-center px-2">
+        <Button
+          onClick={onPrev}
+          className="bg-secondary-white text-secondary py-3 px-8 rounded-xl"
+        >
+          Voltar
+        </Button>
+        <Button onClick={onNext} className=" py-3 px-8 rounded-xl">
+          Salvar informação
+        </Button>
+      </div>
+    </div>
+  )
+}
+
+const CreatePatientStep = ({ onNext }: stepProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {},
   })
-
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values)
   }
   return (
-    <div className="w-full">
+    <div>
       <DialogHeader className="mb-2">
         <DialogTitle>Criar novo Paciente</DialogTitle>
         <Separator orientation="horizontal" className="my-1 " />
@@ -281,10 +311,32 @@ export const CreatePatient = () => {
         </form>
       </Form>
       <DialogFooter className="mt-4">
-        <Button className="px-12 py-2 rounded-xl text-white" type="submit">
+        <Button className="px-12 py-2 rounded-xl text-white" onClick={onNext}>
           Gerar Carteirinha do hospital
         </Button>
       </DialogFooter>
+    </div>
+  )
+}
+
+export const CreatePatient = () => {
+  const [currentStep, setCurrentStep] = useState(1)
+
+  const handleNextStep = () => {
+    setCurrentStep(currentStep + 1)
+    console.log(currentStep)
+  }
+
+  const handlePrevStep = () => {
+    setCurrentStep(currentStep - 1)
+  }
+
+  return (
+    <div className="w-full">
+      {currentStep === 1 && <CreatePatientStep onNext={handleNextStep} />}
+      {currentStep === 2 && (
+        <MindCards onNext={handleNextStep} onPrev={handlePrevStep} />
+      )}
     </div>
   )
 }
