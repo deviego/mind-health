@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/dialog'
 import { Separator } from '@/components/ui/separator'
 import { useState } from 'react'
+import { CircleCheckBig, X } from 'lucide-react'
 
 import { z } from 'zod'
 import {
@@ -31,7 +32,7 @@ import {
 } from '@/components/ui/form'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { X } from 'lucide-react'
+
 import { Card } from '@/components/ui/card'
 
 const formSchema = z.object({
@@ -155,9 +156,9 @@ function Step3({ onNext, onPrev }: stepProps) {
               <SelectValue placeholder="selecionar procedimento" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="light">Light</SelectItem>
-              <SelectItem value="dark">Dark</SelectItem>
-              <SelectItem value="system">System</SelectItem>
+              <SelectItem value="light">Cirurgia</SelectItem>
+              <SelectItem value="dark">Consulta</SelectItem>
+              <SelectItem value="system">Exames</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -181,27 +182,15 @@ function Step4({ onNext, onPrev }: stepProps) {
   return (
     <DialogContent className="w-80">
       <DialogHeader>
-        <DialogTitle>Profissional </DialogTitle>
+        <DialogTitle>Agenda </DialogTitle>
         <Separator />
-        <DialogDescription>Agora, selecione o médico</DialogDescription>
+        <DialogDescription>
+          Visualizar os horários disponíveis na agenda do profissional
+        </DialogDescription>
       </DialogHeader>
       <div>
         <div className="w-full mb-2">
-          <FormField
-            name=""
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input
-                    placeholder="Adicionar profissional"
-                    className="w-full"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          <h1>Parte sendo refeita com as alterações pedidas</h1>
         </div>
       </div>
       <div className="flex justify-between items-center px-2">
@@ -223,27 +212,15 @@ function Step5({ onNext, onPrev }: stepProps) {
   return (
     <DialogContent className="w-80">
       <DialogHeader>
-        <DialogTitle>Profissional </DialogTitle>
+        <DialogTitle>Agenda </DialogTitle>
         <Separator />
-        <DialogDescription>Agora, selecione o médico</DialogDescription>
+        <DialogDescription>
+          Visualisar os horários dos médicos selecionado
+        </DialogDescription>
       </DialogHeader>
       <div>
         <div className="w-full mb-2">
-          <FormField
-            name=""
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input
-                    placeholder="Adicionar profissional"
-                    className="w-full"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          <h1>Parte sendo refeita com as alterações pedidas</h1>
         </div>
       </div>
       <div className="flex justify-between items-center px-2">
@@ -294,9 +271,9 @@ function Step6({ onNext, onPrev }: stepProps) {
               <SelectValue placeholder="01/01/2024" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="light">Light</SelectItem>
-              <SelectItem value="dark">Dark</SelectItem>
-              <SelectItem value="system">System</SelectItem>
+              <SelectItem value="light">02/01/2024</SelectItem>
+              <SelectItem value="dark">03/01/2024</SelectItem>
+              <SelectItem value="system">04/01/2024</SelectItem>
             </SelectContent>
           </Select>
           <Select>
@@ -304,9 +281,9 @@ function Step6({ onNext, onPrev }: stepProps) {
               <SelectValue placeholder="13h30Min" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="light">Light</SelectItem>
-              <SelectItem value="dark">Dark</SelectItem>
-              <SelectItem value="system">System</SelectItem>
+              <SelectItem value="light">13h00min</SelectItem>
+              <SelectItem value="dark">13h30min</SelectItem>
+              <SelectItem value="system">14h00min</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -438,45 +415,27 @@ function Step8({ onNext, onPrev }: stepProps) {
         >
           Voltar
         </Button>
-        <Button onClick={onNext} className=" py-3 px-8 rounded-xl">
-          {' '}
-          Selecionar
+        <Button className=" py-3 px-8 rounded-xl" onClick={onNext}>
+          Continuar
         </Button>
       </div>
     </DialogContent>
   )
 }
-function Step9() {
+
+function Step9({ onSent }: stepProps) {
   return (
     <DialogContent className="w-80">
       <DialogHeader>
-        <DialogTitle>Profissional </DialogTitle>
+        <DialogTitle>Parabéns </DialogTitle>
         <Separator />
-        <DialogDescription>Agora, selecione o médico</DialogDescription>
+        <DialogDescription>Você acabou de criar um orçamento</DialogDescription>
       </DialogHeader>
-      <div>
-        <div className="w-full mb-2">
-          <FormField
-            name=""
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input
-                    placeholder="Adicionar profissional"
-                    className="w-full"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
+
+      <div className="w-full mb-2 flex items-center justify-center">
+        <CircleCheckBig className="text-green-500 " width={64} height={64} />
       </div>
-      <div>
-        <Button>Voltar</Button>
-        <Button> Continuar</Button>
-      </div>
+      <Button onClick={onSent}> Fechar</Button>
     </DialogContent>
   )
 }
@@ -485,6 +444,7 @@ export function CreateBudget() {
     resolver: zodResolver(formSchema),
   })
   const [currentStep, setCurrentStep] = useState(1)
+  const [isOpen, setIsOpen] = useState(false)
 
   const handleNextStep = () => {
     setCurrentStep(currentStep + 1)
@@ -493,6 +453,10 @@ export function CreateBudget() {
   const handlePrevStep = () => {
     setCurrentStep(currentStep - 1)
   }
+  const handleSent = () => {
+    setCurrentStep(1)
+    setIsOpen(false)
+  }
 
   // const onSubmit = (data: FormData) => {
   //   // Lógica de envio do formulário aqui
@@ -500,12 +464,14 @@ export function CreateBudget() {
   // }
 
   return (
-    <Dialog>
+    <Dialog open={isOpen}>
       <DialogTrigger>
-        <Button className="rounded-xl py-3 px-5 w-64 mt-3">
-          {' '}
+        <Button
+          className="rounded-xl py-3 px-5 w-64 mt-3"
+          onClick={() => setIsOpen(true)}
+        >
           Criar orçamento
-        </Button>{' '}
+        </Button>
       </DialogTrigger>
       <Form {...form}>
         <form className="flex flex-wrap w-full">
@@ -531,7 +497,7 @@ export function CreateBudget() {
           {currentStep === 8 && (
             <Step8 onNext={handleNextStep} onPrev={handlePrevStep} />
           )}
-          {currentStep === 9 && <Step9 />}
+          {currentStep === 9 && <Step9 onSent={handleSent} />}
         </form>
       </Form>
     </Dialog>

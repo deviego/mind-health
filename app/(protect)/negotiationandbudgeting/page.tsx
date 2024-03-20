@@ -12,14 +12,18 @@ import Link from 'next/link'
 import { Separator } from '@/components/ui/separator'
 import { Stethoscope } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { CreateBudget } from '../_components/ModalCreateBudget'
 import { ModalNegotiationOrCreate } from '../_components/ModalNegotiation'
 
 export default function NegotiationAndBudgeting() {
   return (
     <div className="container">
       <ModalNegotiationOrCreate />
-      <div>
-        <h1 className="font-semibold ">Negociações pendentes</h1>
+      <div className="flex items-center justify-between mb-2 w-full z">
+        <h1 className="font-semibold w-full">Negociações pendentes</h1>
+        <div>
+          <CreateBudget />
+        </div>
       </div>
       <Separator orientation="horizontal" className="my-2" />
       <div className="flex items-center gap-3 w-full  justify-end  mt-1">

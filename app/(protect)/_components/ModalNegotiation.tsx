@@ -7,7 +7,6 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from '@/components/ui/dialog'
 import { Separator } from '@/components/ui/separator'
 import { useState } from 'react'
@@ -19,7 +18,6 @@ export function ModalNegotiationOrCreate() {
   return (
     <div>
       <Dialog defaultOpen open={open}>
-        <DialogTrigger> Criar novo orçamentos</DialogTrigger>
         <DialogContent className="w-[44em]">
           <DialogHeader>
             <DialogTitle>Orçamentos</DialogTitle>
