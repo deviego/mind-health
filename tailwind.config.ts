@@ -45,6 +45,7 @@ const config = {
           DEFAULT: '#000000',
           gray: '#4F535A',
           white: '#EDEDED',
+          dark: '#2F2F2F',
         },
         ellipse: '#200492',
         pink: '#E500F9',

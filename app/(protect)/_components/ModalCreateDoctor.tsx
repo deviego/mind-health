@@ -6,6 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogFooter,
+  DialogContent,
 } from '@/components/ui/dialog'
 import {
   Form,
@@ -27,6 +28,7 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { Input } from '@/components/ui/input'
+import { useState } from 'react'
 
 const formSchema = z.object({
   professionalName: z.string(),
@@ -43,17 +45,146 @@ const formSchema = z.object({
   job: z.string(),
   complement: z.string().optional(),
 })
+type stepProps = {
+  onNext?: () => void
+  onPrev?: () => void
+  onSubmit?: () => void
+}
 
-export const CreateDoctor = () => {
+const SecondInfo = ({ onPrev, onSubmit }: stepProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {},
   })
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
-  }
   return (
-    <div className="w-full">
+    <DialogContent className="w-[53.125rem]">
+      <DialogHeader className="mb-2">
+        <DialogTitle>Cadastro de profissional</DialogTitle>
+        <Separator orientation="horizontal" className="my-1 " />
+        <DialogDescription className="">
+          Preencha com os procedimentos que o profissional pode realizar
+        </DialogDescription>
+      </DialogHeader>
+      <Form {...form}>
+        <form className=" w-full">
+          <div className="mb-5">
+            <FormField
+              control={form.control}
+              name=""
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-sm font-bold">
+                    Adicionar procedimento
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder=" Adicionar novo procedimento     +"
+                      className="w-64"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className="flex  w-full gap-4 ">
+            <FormField
+              control={form.control}
+              name=""
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-sm font-bold">
+                    Nome do procedimento
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Nome do procedimento"
+                      className="w-48"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name=""
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-sm font-bold">CPF</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="01/03/2024"
+                      className="w-48"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name=""
+              render={() => (
+                <FormItem>
+                  <FormLabel className="text-sm font-bold">
+                    Forma de pagamento
+                  </FormLabel>
+                  <Select>
+                    s
+                    <SelectTrigger className="w-44">
+                      <SelectValue placeholder="Selecionar" />
+                    </SelectTrigger>
+                    <SelectContent>Porcentagem</SelectContent>
+                    <SelectContent>Valor fixo</SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name=""
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-sm font-bold">Pagamento</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="R$ 00,00"
+                      className="w-48 "
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+        </form>
+      </Form>
+      <DialogFooter className="flex justify-between items-center px-2 w-full">
+        <Button
+          onClick={onPrev}
+          className="bg-secondary-white text-secondary py-3 px-8 rounded-xl"
+        >
+          Voltar
+        </Button>
+        <Button className=" py-3 px-8 rounded-xl">Cadastrar</Button>
+      </DialogFooter>
+    </DialogContent>
+  )
+}
+
+const BasicInfo = ({ onNext }: stepProps) => {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {},
+  })
+  return (
+    <DialogContent className="w-[37.5rem] ">
       <DialogHeader className="mb-2">
         <DialogTitle>Criar novo profissional</DialogTitle>
         <Separator orientation="horizontal" className="my-1 " />
@@ -62,10 +193,7 @@ export const CreateDoctor = () => {
         </DialogDescription>
       </DialogHeader>
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="flex flex-wrap w-full"
-        >
+        <form className="flex flex-wrap w-full">
           <div className="flex  w-full gap-4 items-start">
             <div>
               <FormField
@@ -94,7 +222,11 @@ export const CreateDoctor = () => {
                   <FormItem>
                     <FormLabel className="text-sm font-bold">CPF</FormLabel>
                     <FormControl>
-                      <Input placeholder="CPF" className="w-64" {...field} />
+                      <Input
+                        placeholder="000.000.000-00"
+                        className="w-64"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -141,11 +273,7 @@ export const CreateDoctor = () => {
                   <FormItem>
                     <FormLabel className="text-sm font-bold">Bairro</FormLabel>
                     <FormControl>
-                      <Input
-                        placeholder="Atualizar foto de perfil"
-                        className="w-64"
-                        {...field}
-                      />
+                      <Input placeholder="Bairro" className="w-64" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -161,7 +289,7 @@ export const CreateDoctor = () => {
                     </FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Atualizar foto de perfil"
+                        placeholder="Número da sua casa"
                         className="w-64"
                         {...field}
                       />
@@ -180,7 +308,7 @@ export const CreateDoctor = () => {
                     </FormLabel>
                     <Select>
                       <SelectTrigger className="w-64">
-                        <SelectValue placeholder="Gênero" />
+                        <SelectValue placeholder="Médico" />
                       </SelectTrigger>
                       <SelectContent>Médico</SelectContent>
                       <SelectContent>Infermeiro</SelectContent>
@@ -280,15 +408,15 @@ export const CreateDoctor = () => {
               />
               <FormField
                 control={form.control}
-                name="CPF"
+                name="complement"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-sm font-bold">
-                      Nome completo
+                      Complemento
                     </FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Atualizar foto de perfil"
+                        placeholder="Complemento"
                         className="w-64"
                         {...field}
                       />
@@ -302,10 +430,35 @@ export const CreateDoctor = () => {
         </form>
       </Form>
       <DialogFooter className="mt-2">
-        <Button className="px-12 py-2 rounded-xl text-white" type="submit">
-          Cadastrar
+        <Button className="px-12 py-2 rounded-xl text-white" onClick={onNext}>
+          Continuar
         </Button>
       </DialogFooter>
-    </div>
+    </DialogContent>
+  )
+}
+
+export const CreateDoctor = () => {
+  // function onSubmit(values: z.infer<typeof formSchema>) {
+  //   console.log(values)
+  // }
+  const [currentStep, setCurrentStep] = useState(1)
+
+  const handleNextStep = () => {
+    setCurrentStep(currentStep + 1)
+    console.log(currentStep)
+  }
+
+  const handlePrevStep = () => {
+    setCurrentStep(currentStep - 1)
+  }
+  const handleSend = () => {
+    setCurrentStep(currentStep - 1)
+  }
+  return (
+    <>
+      {currentStep === 1 && <BasicInfo onNext={handleNextStep} />}
+      {currentStep === 2 && <SecondInfo />}
+    </>
   )
 }

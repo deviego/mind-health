@@ -14,7 +14,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
-import { ScheduleCalendar } from '@/components/scheduleCalendar'
+import { Schedule } from '@/components/scheduleCalendar'
 import {
   Select,
   SelectContent,
@@ -38,7 +38,7 @@ export default function AgendamentoPage() {
           onDayClick={handleDayClick}
         />
       </div>
-      <div className="w-full flex item-center justify-center">
+      <div className="w-full flex items-start justify-center">
         <div className="w-[642px] z-10">
           <Card className="w-full flex justify-between item-center py-4 px-3 rounded-2xl mb-6 shadow-xl">
             <div>
@@ -133,7 +133,7 @@ export default function AgendamentoPage() {
               </DialogContent>
             </Dialog>
           </Card>
-          <ScheduleCalendar />
+          <Schedule />
         </div>
       </div>
     </div>

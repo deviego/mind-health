@@ -6,6 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogFooter,
+  DialogContent,
 } from '@/components/ui/dialog'
 import {
   Form,
@@ -22,12 +23,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { Card } from '@/components/ui/card'
 
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { Input } from '@/components/ui/input'
 import { useState } from 'react'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from '@/components/ui/carousel'
+import { Nfc } from 'lucide-react'
 
 const formSchema = z.object({
   patientName: z.string(),
@@ -49,6 +57,161 @@ type stepProps = {
   onPrev?: () => void
 }
 
+const PatientAllCards = ({ onNext, onPrev }: stepProps) => {
+  return (
+    <div className="w-full">
+      <DialogHeader className="mb-2">
+        <DialogTitle>Todos os meus cartões </DialogTitle>
+        <Separator orientation="horizontal" className="my-1 " />
+        <DialogDescription className="">
+          Aqui está todos os seus cartões
+        </DialogDescription>
+      </DialogHeader>
+      <div className="w-[550px] flex flex-wrap my-6 h-[450px] gap-3 justify-center">
+        <Card className="w-60 h-48 rounded-2xl">
+          <div className="flex justify-between items-center  px-4 h-3/5 bg-secondary-white  rounded-t-2xl">
+            <img
+              src="/imgs/MiND-logo.png"
+              alt=""
+              width={50}
+              height={21}
+              className="max-xl:hidden"
+            />
+            <Nfc className="text-secondary-gray" width={32} height={32} />
+          </div>
+          <div className="w-full  bg-secondary-dark  rounded-b-2xl p-2 text-white ">
+            <div className="px-4">
+              <h1 className="">5022 3386 9820 1246</h1>
+            </div>
+            <div className="flex justify-between items-center px-4">
+              <div>
+                <p className="font-semibold leading-tight text-md">
+                  Ana Belfort
+                </p>
+                <p className="text-xs">Paciente</p>
+              </div>
+              <img
+                src="/imgs/Chip.png"
+                alt=""
+                width={32}
+                height={32}
+                className="max-xl:hidden"
+              />
+            </div>
+          </div>
+        </Card>
+        <Card className="w-60 h-48 rounded-2xl">
+          <div className="flex justify-between items-center  px-4 h-3/5 bg-secondary-white  rounded-t-2xl">
+            <img
+              src="/imgs/MiND-logo.png"
+              alt=""
+              width={50}
+              height={21}
+              className="max-xl:hidden"
+            />
+            <Nfc className="text-secondary-gray" width={32} height={32} />
+          </div>
+          <div className="w-full  bg-secondary-dark  rounded-b-2xl p-2 text-white ">
+            <div className="px-4">
+              <h1 className="">5022 3386 9820 1246</h1>
+            </div>
+            <div className="flex justify-between items-center px-4">
+              <div>
+                <p className="font-semibold leading-tight text-md">
+                  Ana Belfort
+                </p>
+                <p className="text-xs">Paciente</p>
+              </div>
+              <img
+                src="/imgs/Chip.png"
+                alt=""
+                width={32}
+                height={32}
+                className="max-xl:hidden"
+              />
+            </div>
+          </div>
+        </Card>
+        <Card className="w-60 h-48 rounded-2xl">
+          <div className="flex justify-between items-center  px-4 h-3/5 bg-secondary-white  rounded-t-2xl">
+            <img
+              src="/imgs/MiND-logo.png"
+              alt=""
+              width={50}
+              height={21}
+              className="max-xl:hidden"
+            />
+            <Nfc className="text-secondary-gray" width={32} height={32} />
+          </div>
+          <div className="w-full  bg-secondary-dark  rounded-b-2xl p-2 text-white ">
+            <div className="px-4">
+              <h1 className="">5022 3386 9820 1246</h1>
+            </div>
+            <div className="flex justify-between items-center px-4">
+              <div>
+                <p className="font-semibold leading-tight text-md">
+                  Ana Belfort
+                </p>
+                <p className="text-xs">Paciente</p>
+              </div>
+              <img
+                src="/imgs/Chip.png"
+                alt=""
+                width={32}
+                height={32}
+                className="max-xl:hidden"
+              />
+            </div>
+          </div>
+        </Card>
+        <Card className="w-60 h-48 rounded-2xl">
+          <div className="flex justify-between items-center  px-4 h-3/5 bg-secondary-white  rounded-t-2xl">
+            <img
+              src="/imgs/MiND-logo.png"
+              alt=""
+              width={50}
+              height={21}
+              className="max-xl:hidden"
+            />
+            <Nfc className="text-secondary-gray" width={32} height={32} />
+          </div>
+          <div className="w-full  bg-secondary-dark  rounded-b-2xl p-2 text-white ">
+            <div className="px-4">
+              <h1 className="">5022 3386 9820 1246</h1>
+            </div>
+            <div className="flex justify-between items-center px-4">
+              <div>
+                <p className="font-semibold leading-tight text-md">
+                  Ana Belfort
+                </p>
+                <p className="text-xs">Paciente</p>
+              </div>
+              <img
+                src="/imgs/Chip.png"
+                alt=""
+                width={32}
+                height={32}
+                className="max-xl:hidden"
+              />
+            </div>
+          </div>
+        </Card>
+      </div>
+      <div className="flex justify-between items-center px-2">
+        <Button
+          onClick={onPrev}
+          className="bg-secondary-white text-secondary py-3 px-8 rounded-xl"
+        >
+          Voltar
+        </Button>
+        <Button onClick={onNext} className=" py-3 px-8 rounded-xl">
+          Salvar informação
+        </Button>
+      </div>
+    </div>
+  )
+}
+
 const MindCards = ({ onNext, onPrev }: stepProps) => {
   return (
     <div>
@@ -59,6 +222,121 @@ const MindCards = ({ onNext, onPrev }: stepProps) => {
           Preencha os dados correspondente do paciente
         </DialogDescription>
       </DialogHeader>
+      <div className="my-8">
+        <Carousel
+          className="w-[550px]"
+          opts={{
+            align: 'center',
+          }}
+        >
+          <CarouselContent className="w-full">
+            <CarouselItem className=" basis-3/5 ">
+              <Card className="w-72 h-48 rounded-2xl">
+                <div className="flex justify-between items-center  px-4 h-3/5 bg-secondary-white  rounded-t-2xl">
+                  <img
+                    src="/imgs/MiND-logo.png"
+                    alt=""
+                    width={50}
+                    height={21}
+                    className="max-xl:hidden"
+                  />
+                  <Nfc className="text-secondary-gray" width={32} height={32} />
+                </div>
+                <div className="w-full  bg-secondary-dark  rounded-b-2xl p-2 text-white ">
+                  <div className="px-4">
+                    <h1 className="">5022 3386 9820 1246</h1>
+                  </div>
+                  <div className="flex justify-between items-center px-4">
+                    <div>
+                      <p className="font-semibold leading-tight text-md">
+                        Ana Belfort
+                      </p>
+                      <p className="text-xs">Paciente</p>
+                    </div>
+                    <img
+                      src="/imgs/Chip.png"
+                      alt=""
+                      width={32}
+                      height={32}
+                      className="max-xl:hidden"
+                    />
+                  </div>
+                </div>
+              </Card>
+            </CarouselItem>
+
+            <CarouselItem className="  basis-3/5 ">
+              <Card className="w-72 h-48 rounded-2xl">
+                <div className="flex justify-between items-center  px-4 h-3/5 bg-secondary-white  rounded-t-2xl">
+                  <img
+                    src="/imgs/MiND-logo.png"
+                    alt=""
+                    width={50}
+                    height={21}
+                    className="max-xl:hidden"
+                  />
+                  <Nfc className="text-secondary-gray" width={32} height={32} />
+                </div>
+                <div className="w-full  bg-secondary-dark  rounded-b-2xl p-2 text-white ">
+                  <div className="px-4">
+                    <h1 className="">5022 3386 9820 1246</h1>
+                  </div>
+                  <div className="flex justify-between items-center px-4">
+                    <div>
+                      <p className="font-semibold leading-tight text-md">
+                        Ana Belfort
+                      </p>
+                      <p className="text-xs">Paciente</p>
+                    </div>
+                    <img
+                      src="/imgs/Chip.png"
+                      alt=""
+                      width={32}
+                      height={32}
+                      className="max-xl:hidden"
+                    />
+                  </div>
+                </div>
+              </Card>
+            </CarouselItem>
+
+            <CarouselItem className="  basis-3/5 ">
+              <Card className="w-72 h-48 rounded-2xl">
+                <div className="flex justify-between items-center  px-4 h-3/5 bg-secondary-white  rounded-t-2xl">
+                  <img
+                    src="/imgs/MiND-logo.png"
+                    alt=""
+                    width={50}
+                    height={21}
+                    className="max-xl:hidden"
+                  />
+                  <Nfc className="text-secondary-gray" width={32} height={32} />
+                </div>
+                <div className="w-full  bg-secondary-dark  rounded-b-2xl p-2 text-white ">
+                  <div className="px-4">
+                    <h1 className="">5022 3386 9820 1246</h1>
+                  </div>
+                  <div className="flex justify-between items-center px-4">
+                    <div>
+                      <p className="font-semibold leading-tight text-md">
+                        Ana Belfort
+                      </p>
+                      <p className="text-xs">Paciente</p>
+                    </div>
+                    <img
+                      src="/imgs/Chip.png"
+                      alt=""
+                      width={32}
+                      height={32}
+                      className="max-xl:hidden"
+                    />
+                  </div>
+                </div>
+              </Card>
+            </CarouselItem>
+          </CarouselContent>
+        </Carousel>
+      </div>
       <div className="flex justify-between items-center px-2">
         <Button
           onClick={onPrev}
@@ -83,7 +361,7 @@ const CreatePatientStep = ({ onNext }: stepProps) => {
     console.log(values)
   }
   return (
-    <div>
+    <DialogContent className="w-full">
       <DialogHeader className="mb-2">
         <DialogTitle>Criar novo Paciente</DialogTitle>
         <Separator orientation="horizontal" className="my-1 " />
@@ -315,7 +593,7 @@ const CreatePatientStep = ({ onNext }: stepProps) => {
           Gerar Carteirinha do hospital
         </Button>
       </DialogFooter>
-    </div>
+    </DialogContent>
   )
 }
 
@@ -336,6 +614,9 @@ export const CreatePatient = () => {
       {currentStep === 1 && <CreatePatientStep onNext={handleNextStep} />}
       {currentStep === 2 && (
         <MindCards onNext={handleNextStep} onPrev={handlePrevStep} />
+      )}
+      {currentStep === 3 && (
+        <PatientAllCards onNext={handleNextStep} onPrev={handlePrevStep} />
       )}
     </div>
   )

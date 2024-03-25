@@ -11,7 +11,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu'
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
+import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -76,9 +76,8 @@ export const NavBar = () => {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <DialogContent className="w-[600px]">
-            {dialog === Dialogs.dialog1 ? <CreatePatient /> : <CreateDoctor />}
-          </DialogContent>
+
+          {dialog === Dialogs.dialog1 ? <CreatePatient /> : <CreateDoctor />}
         </Dialog>
         <Link href="/scheduling">
           <FileText />
