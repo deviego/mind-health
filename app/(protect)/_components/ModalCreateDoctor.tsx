@@ -51,7 +51,7 @@ type stepProps = {
   onSubmit?: () => void
 }
 
-const SecondInfo = ({ onPrev, onSubmit }: stepProps) => {
+const SecondInfo = ({ onPrev }: stepProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {},
@@ -449,12 +449,12 @@ export const CreateDoctor = () => {
     console.log(currentStep)
   }
 
-  const handlePrevStep = () => {
-    setCurrentStep(currentStep - 1)
-  }
-  const handleSend = () => {
-    setCurrentStep(currentStep - 1)
-  }
+  // const handlePrevStep = () => {
+  //   setCurrentStep(currentStep - 1)
+  // }
+  // const handleSend = () => {
+  //   setCurrentStep(currentStep - 1)
+  // }
   return (
     <>
       {currentStep === 1 && <BasicInfo onNext={handleNextStep} />}

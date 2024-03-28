@@ -23,7 +23,7 @@ import {
 import Link from 'next/link'
 import { CreatePatient } from '@/app/(protect)/_components/ModalCreatePatient'
 import { useState } from 'react'
-import { CreateDoctor } from '@/app/(protect)/_components/ModalCreateDoctor'
+import { CreateDoctor } from '@/app/(protect)/_components/modalCreateDoctor'
 enum Dialogs {
   dialog1 = 'dialog1',
   dialog2 = 'dialog2',
@@ -74,6 +74,12 @@ export const NavBar = () => {
                   Negociação e orçamento
                 </Link>
               </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/patients">Ver pacientes</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/benefit">Benefícios</Link>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
 
@@ -82,6 +88,7 @@ export const NavBar = () => {
         <Link href="/scheduling">
           <FileText />
         </Link>
+
         <Bell />
       </div>
 

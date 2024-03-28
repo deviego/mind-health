@@ -1,6 +1,5 @@
 'use client'
 
-import { ScheduleCalendar } from '@/components/scheduleCalendar'
 import { Card } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
 import {
@@ -422,7 +421,6 @@ const HomePage = () => {
             </Card>
           </Card>
         </div>
-        <ScheduleCalendar className="w-[458px] mt-3 shadow-xl" date={today} />
       </div>
     </div>
   )

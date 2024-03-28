@@ -1,6 +1,5 @@
 'use client'
 import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
 import {
   Dialog,
   DialogContent,
@@ -10,9 +9,9 @@ import {
 } from '@/components/ui/dialog'
 import { Separator } from '@/components/ui/separator'
 import { useState } from 'react'
-import { CreateBudget } from './modalCreateBudget'
+import { CreateBenefit } from './modalCreateBenefit'
 
-export function ModalNegotiationOrCreate() {
+export function ModalSeeOrCreateBenefit() {
   const [open, setIsOpen] = useState(true)
   const close = () => setIsOpen(false)
   return (
@@ -20,7 +19,7 @@ export function ModalNegotiationOrCreate() {
       <Dialog defaultOpen open={open}>
         <DialogContent className="w-[44em]">
           <DialogHeader>
-            <DialogTitle>Orçamentos</DialogTitle>
+            <DialogTitle>Benefícios</DialogTitle>
             <Separator />
             <DialogDescription>
               Olá, tudo bem? selecione uma das opções na qual você deseja
@@ -28,23 +27,23 @@ export function ModalNegotiationOrCreate() {
             </DialogDescription>
           </DialogHeader>
           <div className="flex gap-3 items-center justify-center">
-            <div className="flex flex-col items-center justify-center">
-              <Card className="bg-[url('/imgs/negotiation-baner.png')] border-none bg-cover  h-96 w-72 bg-transparent flex items-end text-center">
-                <div className="mb-3 px-3">
+            <div className="flex flex-col items-center ">
+              <div className="bg-[url('/imgs/negotiation-baner.png')] border-none bg-cover  h-96 w-72 bg-transparent flex items-end ">
+                <div className="mb-3 px-3 ml-2">
                   <p className="font-semibold text-sm">
-                    Criar um novo orçamento
+                    Criar um novo benefício
                   </p>
                   <p className="text-xs">
-                    O nosso sistema vai gerar uma cotação de preço e após
-                    concluído após você informar os detalhes.
+                    Ofereça um plano de benefício exclusivo para os seus
+                    pacientes personalize o plano da sua maneira
                   </p>
                 </div>
-              </Card>
-              <CreateBudget />
+              </div>
+              <CreateBenefit />
             </div>
             <div className="flex flex-col items-center justify-center ">
-              <Card className="bg-[url('/imgs/orçamento-baner.png')] border-none bg-cover  h-96 w-72 text-center bg-transparent flex items-end ">
-                <div className="mb-3 px-2">
+              <div className="bg-[url('/imgs/orçamento-baner.png')] border-none bg-cover  h-96 w-64  bg-transparent flex items-end ">
+                <div className="mb-3 px-2 ml-2">
                   <p className="font-semibold text-sm">
                     Conclua os respectivos orçamentos{' '}
                   </p>
@@ -53,13 +52,13 @@ export function ModalNegotiationOrCreate() {
                     informar mais alguns detalhes.
                   </p>
                 </div>
-              </Card>
+              </div>
 
               <Button
                 className="rounded-xl py-3 px-5 w-64 mt-3"
                 onClick={close}
               >
-                Negociações pendentes
+                Benefícios existentes
               </Button>
             </div>
           </div>

@@ -14,7 +14,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
-import { Schedule } from '@/components/scheduleCalendar'
+
 import {
   Select,
   SelectContent,
@@ -133,7 +133,6 @@ export default function AgendamentoPage() {
               </DialogContent>
             </Dialog>
           </Card>
-          <Schedule />
         </div>
       </div>
     </div>

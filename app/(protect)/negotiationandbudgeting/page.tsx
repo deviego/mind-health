@@ -12,8 +12,8 @@ import Link from 'next/link'
 import { Separator } from '@/components/ui/separator'
 import { Stethoscope } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { CreateBudget } from '../_components/ModalCreateBudget'
-import { ModalNegotiationOrCreate } from '../_components/ModalNegotiation'
+import { CreateBudget } from '../_components/modalCreateBudget'
+import { ModalNegotiationOrCreate } from '../_components/modalNegotiation'
 
 export default function NegotiationAndBudgeting() {
   return (
