@@ -62,6 +62,7 @@ export function Scheduler() {
       startDate={dayjs().locale('pt-br').format()} // Corrigido o formato da data de início
       columns={columns}
       events={events}
+      locale={'pt-br'}
     />
   )
 }
