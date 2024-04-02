@@ -21,7 +21,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 import Link from 'next/link'
-import { CreatePatient } from '@/app/(protect)/_components/ModalCreatePatient'
+import { CreatePatient } from '@/app/(protect)/_components/modalCreatePatient'
 import { useState } from 'react'
 import { CreateDoctor } from '@/app/(protect)/_components/modalCreateDoctor'
 enum Dialogs {

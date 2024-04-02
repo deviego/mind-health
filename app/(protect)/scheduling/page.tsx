@@ -22,6 +22,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { Scheduler } from '@/components/scheduleCalendar'
 
 export default function AgendamentoPage() {
   const [date, setDate] = useState<Date | undefined>(new Date())
@@ -133,6 +134,9 @@ export default function AgendamentoPage() {
               </DialogContent>
             </Dialog>
           </Card>
+          <div className="w-full h-80">
+            <Scheduler />
+          </div>
         </div>
       </div>
     </div>

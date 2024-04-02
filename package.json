@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@daypilot/daypilot-lite-react": "^3.21.0",
     "@devexpress/dx-react-core": "^4.0.8",
     "@devexpress/dx-react-scheduler": "^4.0.8",
     "@hookform/resolvers": "^3.3.4",

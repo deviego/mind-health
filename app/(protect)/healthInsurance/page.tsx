@@ -1,8 +1,9 @@
 'use client'
 import { Card } from '@/components/ui/card'
 import { SquarePen } from 'lucide-react'
-import { RegisterHealthInsurance } from '../_components/ModalRegisterHealthInsurance'
+
 import { ScrollArea } from '@/components/ui/scroll-area'
+import { RegisterHealthInsurance } from '../_components/ModalRegisterHealthInsurance'
 
 export default function HealthInsurance() {
   return (
@@ -54,7 +55,7 @@ export default function HealthInsurance() {
                   </Card>
                 </div>
                 <div>
-                  <h1 className="text-sm leading-none font-semibold">
+                  <h1 className="text-sm leading -none font-semibold">
                     Nome do convênio
                   </h1>
                   <p className="text-xs ">
