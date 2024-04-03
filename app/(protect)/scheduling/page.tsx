@@ -43,12 +43,39 @@ const horariosFixos = [
   '22:00',
 ]
 
-const profissionais = ['Dr. Fulano', 'Dra. Ciclana', 'Dr. Beltrano']
-
-const agendamentos = [
-  { cliente: 'João', horario: '08:00', profissional: 'Dr. Fulano' },
-  { cliente: 'Maria', horario: '09:00', profissional: 'Dra. Ciclana' },
-  { cliente: 'José', horario: '10:00', profissional: 'Dr. Beltrano' },
+const profissionais = [
+  { name: 'Dr. Fulano', photo: 'https://source.unsplash.com/200x200/?doctor' },
+  {
+    name: 'Dra. Ciclana',
+    photo: 'https://source.unsplash.com/200x200/?physician',
+  },
+  {
+    name: 'Dra. Beltrano',
+    photo: 'https://source.unsplash.com/200x200/?physician',
+  },
+]
+const appointments = [
+  {
+    client: 'João',
+    startTime: '07:00',
+    endTime: '10:00',
+    professional: 'Dr. Fulano',
+    serviceType: 'Consulta',
+  },
+  {
+    client: 'Maria',
+    startTime: '09:00',
+    endTime: '11:00',
+    professional: 'Dra. Ciclana',
+    serviceType: 'Exame',
+  },
+  {
+    client: 'José',
+    startTime: '10:00',
+    endTime: '12:00',
+    professional: 'Dr. Beltrano',
+    serviceType: 'Consulta',
+  },
 ]
 
 export default function AgendamentoPage() {
@@ -56,7 +83,7 @@ export default function AgendamentoPage() {
   const handleDayClick = () => console.log(date)
 
   return (
-    <div className="w-full flex overflow-y-hidden justify-center items-center bg-auto bg-no-repeat bg-[url('/imgs/rouded-blue.svg')] h-[88vh]">
+    <div className=" flex  items-start bg-auto bg-no-repeat bg-[url('/imgs/rouded-blue.svg')] container ">
       <div className="flex items-center z-10">
         <Calendar
           mode="single"
@@ -66,7 +93,7 @@ export default function AgendamentoPage() {
           onDayClick={handleDayClick}
         />
       </div>
-      <div className="w-full flex items-start justify-center">
+      <div className="w-full flex items-start justify-center pb-5">
         <div className="w-[642px] z-10">
           <Card className="w-full flex justify-between item-center py-4 px-3 rounded-2xl mb-6 shadow-xl">
             <div>
@@ -162,7 +189,11 @@ export default function AgendamentoPage() {
             </Dialog>
           </Card>
           <div className="w-full h-80">
-            <Scheduler />
+            <Scheduler
+              timeslots={horariosFixos}
+              professionals={profissionais}
+              appointments={appointments}
+            />
           </div>
         </div>
       </div>
