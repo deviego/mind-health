@@ -22,7 +22,34 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Scheduler } from '@/components/scheduleCalendar'
+import { Scheduler } from '../_components/calendar'
+
+const horariosFixos = [
+  '07:00',
+  '08:00',
+  '09:00',
+  '10:00',
+  '11:00',
+  '12:00',
+  '13:00',
+  '14:00',
+  '15:00',
+  '16:00',
+  '17:00',
+  '18:00',
+  '19:00',
+  '20:00',
+  '21:00',
+  '22:00',
+]
+
+const profissionais = ['Dr. Fulano', 'Dra. Ciclana', 'Dr. Beltrano']
+
+const agendamentos = [
+  { cliente: 'João', horario: '08:00', profissional: 'Dr. Fulano' },
+  { cliente: 'Maria', horario: '09:00', profissional: 'Dra. Ciclana' },
+  { cliente: 'José', horario: '10:00', profissional: 'Dr. Beltrano' },
+]
 
 export default function AgendamentoPage() {
   const [date, setDate] = useState<Date | undefined>(new Date())
