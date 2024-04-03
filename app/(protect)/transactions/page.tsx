@@ -300,6 +300,36 @@ export default function Transactions() {
                 </div>
                 <div>
                   <p className="text-sm text-secondary-gray  leading-snug">
+                    Entradas
+                  </p>
+                  <h1 className="font-bold text-lg  leading-snug">
+                    R$ 40.300,00
+                  </h1>
+                </div>
+              </Card>
+              <Card className="flex items-center px-3 py-1 gap-3 leading-none shadow-xl rounded-xl">
+                <div>
+                  <Card className="rounded-full p-2 flex items-center text-white bg-red-500 ">
+                    <PieChart />
+                  </Card>
+                </div>
+                <div>
+                  <p className="text-sm text-secondary-gray  leading-snug">
+                    Entradas
+                  </p>
+                  <h1 className="font-bold text-lg  leading-snug text-red-500">
+                    R$ 88.570,00
+                  </h1>
+                </div>
+              </Card>
+              <Card className="flex items-center px-3 py-1 gap-3 leading-none shadow-xl rounded-xl">
+                <div>
+                  <Card className="rounded-full p-2 flex items-center text-white bg-[#7EE100] ">
+                    <PieChart />
+                  </Card>
+                </div>
+                <div>
+                  <p className="text-sm text-secondary-gray  leading-snug">
                     Saldo do dia
                   </p>
                   <h1 className="font-bold text-lg  leading-snug">
