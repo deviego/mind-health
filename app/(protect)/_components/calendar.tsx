@@ -1,10 +1,8 @@
 import { Card } from '@/components/ui/card'
 import { useState } from 'react'
-import { ScrollArea } from '@/components/ui/scroll-area'
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -28,7 +26,7 @@ export function Scheduler({
   professionals,
   appointments,
 }: AgendaProps) {
-  const [agenda, setAgenda] = useState<{
+  const [agenda] = useState<{
     [key: string]: {
       client: string
       serviceType: string
@@ -61,111 +59,121 @@ export function Scheduler({
         })
       }
     })
+
     return initialAgenda
   })
 
   return (
-    <div className="h-full overflow-hidden">
-      <Card className="relative h-full">
-        <Table className="w-full border overflow-x-auto">
-          <TableHeader>
-            <TableRow>
-              <TableHead></TableHead>
-              {professionals.map((professional, index) => (
-                <TableHead key={index} className="px-3 border text-center ">
-                  <div className=" flex items-center gap-3">
+    <Card className="relative h-full">
+      <Table className="w-full  overflow-x-auto h-8">
+        <TableHeader
+          style={{
+            border: 'none',
+          }}
+        >
+          <TableRow>
+            <TableHead
+              style={{
+                borderRight: 'none',
+              }}
+            ></TableHead>
+            {professionals.map((professional, index) => (
+              <TableHead
+                key={index}
+                className="px-3   "
+                style={{ border: 'none', borderBottom: '1px solid #e5e7eb' }}
+              >
+                <div className=" flex items-center gap-3 justify-center">
+                  <div>
                     <img
                       src={professional.photo}
                       alt={professional.name}
-                      className="w-9 h-9 rounded-full mb-2"
+                      className="w-9 h-9 rounded-full "
                     />
-                    <span>{professional.name}</span>
                   </div>
-                </TableHead>
-              ))}
-            </TableRow>
-          </TableHeader>
-
-          <TableBody>
-            {timeslots.map((timeslot, index) => (
-              <TableRow
-                key={index}
-                style={{ border: 'none', borderRight: '1px solid #e5e7eb' }}
-              >
-                <td
-                  className="relative py-1 text-center text-sm"
-                  style={{ borderRight: '1px solid #e5e7eb' }}
-                >
-                  {timeslot}
-                </td>
-                {professionals.map((professional, index) => {
-                  const professionalAppointment =
-                    agenda[`${professional.name}-${timeslot}`]
-
-                  if (
-                    !professionalAppointment ||
-                    professionalAppointment.length === 0
-                  ) {
-                    return <td key={index} className="relative" />
-                  }
-
-                  const occupiedTimeslots: { start: number; end: number }[] = []
-                  let startTime = parseInt(
-                    professionalAppointment[0].startTime.split(':')[0],
-                  )
-                  let endTime = parseInt(
-                    professionalAppointment[0].endTime.split(':')[0],
-                  )
-                  for (let i = 1; i < professionalAppointment.length; i++) {
-                    const current = parseInt(
-                      professionalAppointment[i].startTime.split(':')[0],
-                    )
-                    if (current === endTime) {
-                      endTime = parseInt(
-                        professionalAppointment[i].endTime.split(':')[0],
-                      )
-                    } else {
-                      occupiedTimeslots.push({ start: startTime, end: endTime })
-                      startTime = current
-                      endTime = parseInt(
-                        professionalAppointment[i].endTime.split(':')[0],
-                      )
-                    }
-                  }
-                  occupiedTimeslots.push({ start: startTime, end: endTime })
-
-                  return (
-                    <TableCell key={index} className="relative">
-                      {occupiedTimeslots.map((interval, idx) => (
-                        <div
-                          key={idx}
-                          className=" ml-2 p-2 absolute "
-                          style={{
-                            top: 0,
-                            width: '100%',
-                            height: '100%',
-                            margin: 0,
-                            padding: 0,
-                            overflow: 'hidden',
-                            borderLeft: '4px solid #006BF9',
-                          }}
-                        >
-                          <div className="text-center ">
-                            {idx === 0 && (
-                              <div>{professionalAppointment[0].client}</div>
-                            )}
-                            <div>{professionalAppointment[0].serviceType}</div>
-                          </div>
-                        </div>
-                      ))}
-                    </TableCell>
-                  )
-                })}
-              </TableRow>
+                  <p>{professional.name}</p>
+                </div>
+              </TableHead>
             ))}
-          </TableBody>
-        </Table>
-      </Card>
-    </div>
+          </TableRow>
+        </TableHeader>
+
+        <TableBody>
+          {timeslots.map((timeslot, index) => (
+            <TableRow
+              key={index}
+              style={{ border: 'none', borderRight: '1px solid #e5e7eb' }}
+            >
+              <td
+                className="relative  text-center text-[10px] "
+                style={{ borderRight: '1px solid #e5e7eb' }}
+              >
+                {timeslot}
+              </td>
+              {professionals.map((professional, index) => {
+                const professionalAppointment =
+                  agenda[`${professional.name}-${timeslot}`]
+
+                if (
+                  !professionalAppointment ||
+                  professionalAppointment.length === 0
+                ) {
+                  return <td key={index} className="relative" />
+                }
+
+                const occupiedTimeslots: { start: number; end: number }[] = []
+                let startTime = parseInt(
+                  professionalAppointment[0].startTime.split(':')[0],
+                )
+                let endTime = parseInt(
+                  professionalAppointment[0].endTime.split(':')[0],
+                )
+                for (let i = 1; i < professionalAppointment.length; i++) {
+                  const current = parseInt(
+                    professionalAppointment[i].startTime.split(':')[0],
+                  )
+                  if (current === endTime) {
+                    endTime = parseInt(
+                      professionalAppointment[i].endTime.split(':')[0],
+                    )
+                  } else {
+                    occupiedTimeslots.push({ start: startTime, end: endTime })
+                    startTime = current
+                    endTime = parseInt(
+                      professionalAppointment[i].endTime.split(':')[0],
+                    )
+                  }
+                }
+                occupiedTimeslots.push({ start: startTime, end: endTime })
+
+                return (
+                  <TableCell key={index} className="relative">
+                    {occupiedTimeslots.map((interval, idx) => (
+                      <div
+                        key={idx}
+                        className=" ml-2 p-2 absolute "
+                        style={{
+                          top: 0,
+                          width: '100%',
+                          height: '100%',
+                          margin: 0,
+                          padding: 0,
+                          overflow: 'hidden',
+                          borderLeft: '2px solid #006BF9',
+                        }}
+                      >
+                        <div className="text-left pl-2 ">
+                          <div>{professionalAppointment[0].serviceType}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </TableCell>
+                )
+              })}
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </Card>
   )
 }

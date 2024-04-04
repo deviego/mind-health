@@ -29,13 +29,12 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { Input } from '@/components/ui/input'
 import { useState } from 'react'
-
 const formSchema = z.object({
   professionalName: z.string(),
   dateOfBirth: z.string(),
-  CPF: z.number(),
-  numberFone: z.number(),
-  houseNumber: z.number(),
+  CPF: z.string(), // Alterado de z.number() para z.string()
+  numberFone: z.string(), // Alterado de z.number() para z.string()
+  houseNumber: z.string(), // Alterado de z.number() para z.string()
   gender: z.string(),
   state: z.string(),
   city: z.string(),
@@ -44,7 +43,12 @@ const formSchema = z.object({
   street: z.string(),
   job: z.string(),
   complement: z.string().optional(),
+  procedimento: z.string(), // Novo campo adicionado
+  procedimentoName: z.string(), // Novo campo adicionado
+  methodPayment: z.string(), // Novo campo adicionado
+  payment: z.string(), // Novo campo adicionado
 })
+
 type stepProps = {
   onNext?: () => void
   onPrev?: () => void
@@ -70,7 +74,7 @@ const SecondInfo = ({ onPrev }: stepProps) => {
           <div className="mb-5">
             <FormField
               control={form.control}
-              name=""
+              name="procedimento"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-sm font-bold">
@@ -91,7 +95,7 @@ const SecondInfo = ({ onPrev }: stepProps) => {
           <div className="flex  w-full gap-4 ">
             <FormField
               control={form.control}
-              name=""
+              name="procedimentoName"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-sm font-bold">
@@ -110,7 +114,7 @@ const SecondInfo = ({ onPrev }: stepProps) => {
             />
             <FormField
               control={form.control}
-              name=""
+              name="CPF"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-sm font-bold">CPF</FormLabel>
@@ -127,7 +131,7 @@ const SecondInfo = ({ onPrev }: stepProps) => {
             />
             <FormField
               control={form.control}
-              name=""
+              name="methodPayment"
               render={() => (
                 <FormItem>
                   <FormLabel className="text-sm font-bold">
@@ -147,7 +151,7 @@ const SecondInfo = ({ onPrev }: stepProps) => {
             />
             <FormField
               control={form.control}
-              name=""
+              name="payment"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-sm font-bold">Pagamento</FormLabel>

@@ -16,6 +16,8 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from '@/components/ui/hover-card'
+import { ScrollArea } from '@/components/ui/scroll-area'
+import { Scheduler } from '../_components/calendar'
 
 const HomePage = () => {
   const today = new Date()
@@ -28,6 +30,77 @@ const HomePage = () => {
     day: 'numeric',
     weekday: 'long',
   }
+
+  const horariosFixos = [
+    '07:00',
+    '08:00',
+    '09:00',
+    '10:00',
+    '11:00',
+    '12:00',
+    '13:00',
+    '14:00',
+    '15:00',
+    '16:00',
+    '17:00',
+    '18:00',
+    '19:00',
+    '20:00',
+    '21:00',
+    '22:00',
+  ]
+
+  const profissionais = [
+    {
+      name: 'Dr. Fulano',
+      photo: 'https://source.unsplash.com/200x200/?doctor',
+    },
+    {
+      name: 'Dra. Ciclana',
+      photo: 'https://source.unsplash.com/200x200/?physician',
+    },
+    {
+      name: 'Dr. Beltrano',
+      photo: 'https://source.unsplash.com/200x200/?physician',
+    },
+  ]
+  const appointments = [
+    {
+      client: 'João',
+      startTime: '08:00',
+      endTime: '09:00',
+      professional: 'Dr. Fulano',
+      serviceType: 'Consulta',
+    },
+    {
+      client: 'Maria',
+      startTime: '10:00',
+      endTime: '11:00',
+      professional: 'Dra. Ciclana',
+      serviceType: 'Exame',
+    },
+    {
+      client: 'Estevam',
+      startTime: '13:00',
+      endTime: '14:00',
+      professional: 'Dra. Ciclana',
+      serviceType: 'Exame',
+    },
+    {
+      client: 'José',
+      startTime: '09:00',
+      endTime: '10:00',
+      professional: 'Dr. Beltrano',
+      serviceType: 'Cirurgia',
+    },
+    {
+      client: 'José',
+      startTime: '12:00',
+      endTime: '13:00',
+      professional: 'Dr. Beltrano',
+      serviceType: 'Almoço',
+    },
+  ]
 
   const dateTimeFormatOptions = Object.assign({}, options, {
     weekday: 'short', // Converte 'weekday' para o formato curto
@@ -344,8 +417,8 @@ const HomePage = () => {
           </>
         )}
       </div>
-      <div className="w-full flex flex-col items-end mr-4">
-        <div className="flex gap-3">
+      <div className="w-full flex flex-col items-end mr-4 mt-3">
+        <div className="flex gap-3 mb-4">
           <Card className="w-56 mx-xl:w-40 max-xl:h-72 rounded-2xl max-xl:text-[10px] shadow-xl ">
             <div className="flex justify-between p-4 items-center">
               <img
@@ -420,6 +493,15 @@ const HomePage = () => {
               </Card>
             </Card>
           </Card>
+        </div>
+        <div>
+          <ScrollArea className="h-72">
+            <Scheduler
+              timeslots={horariosFixos}
+              professionals={profissionais}
+              appointments={appointments}
+            />
+          </ScrollArea>
         </div>
       </div>
     </div>

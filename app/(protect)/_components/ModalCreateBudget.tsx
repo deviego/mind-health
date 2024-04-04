@@ -33,6 +33,9 @@ import {
 } from '@/components/ui/form'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Scheduler } from './calendar'
+import { ScrollArea } from '@/components/ui/scroll-area'
+import { Calendar } from '@/components/ui/calendar'
 
 const formSchema = z.object({
   professionalName: z.string(),
@@ -178,8 +181,59 @@ function Step3({ onNext, onPrev }: stepProps) {
   )
 }
 function Step4({ onNext, onPrev }: stepProps) {
+  const horariosFixos = [
+    '07:00',
+    '08:00',
+    '09:00',
+    '10:00',
+    '11:00',
+    '12:00',
+    '13:00',
+    '14:00',
+    '15:00',
+    '16:00',
+    '17:00',
+    '18:00',
+    '19:00',
+    '20:00',
+    '21:00',
+    '22:00',
+  ]
+
+  const profissionais = [
+    {
+      name: 'Dr. exemplo',
+      photo: 'https://source.unsplash.com/200x200/?doctor',
+    },
+  ]
+  const appointments = [
+    {
+      client: 'João',
+      startTime: '08:00',
+      endTime: '09:00',
+      professional: 'Dr. exemplo',
+      serviceType: 'Consulta',
+    },
+    {
+      client: 'Paulo',
+      startTime: '14:00',
+      endTime: '15:00',
+      professional: 'Dr. exemplo',
+      serviceType: 'Cirurgia',
+    },
+    {
+      client: 'João',
+      startTime: '11:00',
+      endTime: '12:00',
+      professional: 'Dr. exemplo',
+      serviceType: 'Ocupado',
+    },
+  ]
+  const [date, setDate] = useState<Date | undefined>(new Date())
+  const handleDayClick = () => console.log(date)
+
   return (
-    <DialogContent className="w-80">
+    <DialogContent className="w-[50rem]">
       <DialogHeader>
         <DialogTitle>Agenda </DialogTitle>
         <Separator />
@@ -187,10 +241,21 @@ function Step4({ onNext, onPrev }: stepProps) {
           Visualizar os horários disponíveis na agenda do profissional
         </DialogDescription>
       </DialogHeader>
-      <div>
-        <div className="w-full mb-2">
-          <h1>Parte sendo refeita com as alterações pedidas</h1>
-        </div>
+      <div className="flex items-center justify-between w-full gap-3">
+        <Calendar
+          mode="single"
+          selected={date}
+          onSelect={setDate}
+          className="rounded-md border bg-white shadow-xl mt-9 mr-10"
+          onDayClick={handleDayClick}
+        />
+        <ScrollArea className="h-80 w-full">
+          <Scheduler
+            timeslots={horariosFixos}
+            professionals={profissionais}
+            appointments={appointments}
+          />
+        </ScrollArea>
       </div>
       <div className="flex justify-between items-center px-2">
         <Button
@@ -208,8 +273,82 @@ function Step4({ onNext, onPrev }: stepProps) {
   )
 }
 function Step5({ onNext, onPrev }: stepProps) {
+  const [date, setDate] = useState<Date | undefined>(new Date())
+  const handleDayClick = () => console.log(date)
+
+  const horariosFixos = [
+    '07:00',
+    '08:00',
+    '09:00',
+    '10:00',
+    '11:00',
+    '12:00',
+    '13:00',
+    '14:00',
+    '15:00',
+    '16:00',
+    '17:00',
+    '18:00',
+    '19:00',
+    '20:00',
+    '21:00',
+    '22:00',
+  ]
+
+  const profissionais = [
+    {
+      name: 'Dr. Fulano',
+      photo: 'https://source.unsplash.com/200x200/?doctor',
+    },
+    {
+      name: 'Dra. Ciclana',
+      photo: 'https://source.unsplash.com/200x200/?doctor',
+    },
+    {
+      name: 'Dr. Beltrano',
+      photo: 'https://source.unsplash.com/200x200/?doctor',
+    },
+  ]
+  const appointments = [
+    {
+      client: 'João',
+      startTime: '08:00',
+      endTime: '09:00',
+      professional: 'Dr. Fulano',
+      serviceType: 'Consulta',
+    },
+    {
+      client: 'Maria',
+      startTime: '10:00',
+      endTime: '11:00',
+      professional: 'Dra. Ciclana',
+      serviceType: 'Exame',
+    },
+    {
+      client: 'Estevam',
+      startTime: '13:00',
+      endTime: '14:00',
+      professional: 'Dra. Ciclana',
+      serviceType: 'Exame',
+    },
+    {
+      client: 'José',
+      startTime: '09:00',
+      endTime: '10:00',
+      professional: 'Dr. Beltrano',
+      serviceType: 'Cirurgia',
+    },
+    {
+      client: 'José',
+      startTime: '12:00',
+      endTime: '13:00',
+      professional: 'Dr. Beltrano',
+      serviceType: 'Almoço',
+    },
+  ]
+
   return (
-    <DialogContent className="w-80">
+    <DialogContent className="w-[50rem]">
       <DialogHeader>
         <DialogTitle>Agenda </DialogTitle>
         <Separator />
@@ -217,10 +356,21 @@ function Step5({ onNext, onPrev }: stepProps) {
           Visualisar os horários dos médicos selecionado
         </DialogDescription>
       </DialogHeader>
-      <div>
-        <div className="w-full mb-2">
-          <h1>Parte sendo refeita com as alterações pedidas</h1>
-        </div>
+      <div className="flex items-center justify-between w-full gap-3">
+        <Calendar
+          mode="single"
+          selected={date}
+          onSelect={setDate}
+          className="rounded-md border bg-white shadow-xl mt-9 mr-10"
+          onDayClick={handleDayClick}
+        />
+        <ScrollArea className="h-80 w-full">
+          <Scheduler
+            timeslots={horariosFixos}
+            professionals={profissionais}
+            appointments={appointments}
+          />
+        </ScrollArea>
       </div>
       <div className="flex justify-between items-center px-2">
         <Button
@@ -317,7 +467,13 @@ function Step7({ onNext, onPrev }: stepProps) {
           <div className="w-96">
             <Card className="flex items-center justify-between my-3 p-2 ">
               <div className="flex gap-3 items-center">
-                <div>avatar</div>
+                <div>
+                  <img
+                    src="https://source.unsplash.com/200x200/?doctor"
+                    alt="paciente"
+                    className="w-9 h-9 rounded-full "
+                  />
+                </div>
                 <div>
                   <p className="text-sm font-semibold leading-none">Vicent</p>
                   <p className="text-xs">Médico</p>

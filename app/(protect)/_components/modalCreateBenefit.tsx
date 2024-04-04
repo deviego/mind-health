@@ -32,21 +32,12 @@ import {
 } from '@/components/ui/form'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-
 const formSchema = z.object({
-  professionalName: z.string(),
-  dateOfBirth: z.string(),
-  CPF: z.number(),
-  numberFone: z.number(),
-  houseNumber: z.number(),
-  gender: z.string(),
-  state: z.string(),
-  city: z.string(),
-  country: z.string(),
-  neighborhood: z.string(),
-  street: z.string(),
-  job: z.string(),
-  complement: z.string().optional(),
+  planName: z.string(),
+  service: z.string(), // Serviço selecionado no formulário
+  worthService: z.string(), // Valor do serviço, presumivelmente uma string para formato monetário
+  worthPlan: z.string(), // Valor do plano, presumivelmente uma string para formato monetário
+  photo: z.string(), // Nome do arquivo da foto, presumivelmente uma string
 })
 
 type stepProps = {
@@ -66,7 +57,7 @@ function Step1({ onNext }: stepProps) {
 
       <div className="w-full mb-2">
         <FormField
-          name=""
+          name="planName"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Nome do plano</FormLabel>
@@ -100,7 +91,7 @@ function Step2({ onNext, onPrev }: stepProps) {
       <div>
         <div className="w-full mb-2 flex px-3 gap-5 ">
           <FormField
-            name=""
+            name="service"
             render={() => (
               <FormItem>
                 <FormLabel>selecione o Serviço </FormLabel>
@@ -121,7 +112,7 @@ function Step2({ onNext, onPrev }: stepProps) {
             )}
           />
           <FormField
-            name=""
+            name="worthService"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Valor do Serviço </FormLabel>
@@ -163,7 +154,7 @@ function Step3({ onNext, onPrev }: stepProps) {
 
       <div className="w-full mb-2">
         <FormField
-          name=""
+          name="worthPlan"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Valor da assinatura do plano </FormLabel>
@@ -201,7 +192,7 @@ function Step4({ onNext, onPrev }: stepProps) {
       </DialogHeader>
       <div>
         <FormField
-          name=""
+          name="photo"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Adicionar foto</FormLabel>
