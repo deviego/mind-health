@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/table'
 import { cn } from '@/lib/utils'
 import { useEffect, useState } from 'react'
-import { EditProfile } from '@/app/(protect)/_components/modalEditProfile'
+import { EditProfile } from '@/app/(protect)/components/modalEditProfile'
 
 type Consultation = {
   doctorName: string

@@ -13,8 +13,8 @@ import { Separator } from '@/components/ui/separator'
 import { Stethoscope } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
-import { ModalNegotiationOrCreate } from '@/app/(protect)/_components/modalNegotiation'
-import { CreateBudget } from '@/app/(protect)/_components/modalCreateBudget'
+import { ModalNegotiationOrCreate } from '@/app/(protect)/components/modalNegotiation'
+import { CreateBudget } from '@/app/(protect)/components/modalCreateBudget'
 
 export default function NegotiationAndBudgeting() {
   return (

@@ -3,8 +3,8 @@
 import { Card } from '@/components/ui/card'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Stethoscope, Syringe } from 'lucide-react'
-import { CreateService } from '@/app/(protect)/_components/modalCreateService'
-import { CreateProduct } from '@/app/(protect)/_components/modalCreateProduct'
+import { CreateService } from '@/app/(protect)/components/modalCreateService'
+import { CreateProduct } from '@/app/(protect)/components/modalCreateProduct'
 
 export default function CadastroProdutosEServico() {
   return (

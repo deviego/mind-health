@@ -27,7 +27,7 @@ import {
 } from '@/components/ui/carousel'
 import { Progress } from '@/components/ui/progress'
 
-import { NewAppointmentsAtTheClinic } from '@/app/(protect)/_components/newAppointmentsAtTheClinic'
+import { NewAppointmentsAtTheClinic } from '@/app/(protect)/components/newAppointmentsAtTheClinic'
 import Link from 'next/link'
 
 export default function FinanceiroPage() {
