@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/dialog'
 import { Separator } from '@/components/ui/separator'
 import { useState } from 'react'
-import { CreateBudget } from './modalCreateBudget'
+import { CreateBudget } from '@/app/(protect)/_components/modalCreateBudget'
 
 export function ModalNegotiationOrCreate() {
   const [open, setIsOpen] = useState(true)

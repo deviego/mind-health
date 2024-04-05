@@ -22,7 +22,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Scheduler } from '../_components/calendar'
+import { Scheduler } from '@/app/(protect)/_components/calendar'
 import { ScrollArea } from '@/components/ui/scroll-area'
 
 const horariosFixos = [

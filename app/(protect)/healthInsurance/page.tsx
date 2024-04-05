@@ -3,7 +3,7 @@ import { Card } from '@/components/ui/card'
 import { SquarePen } from 'lucide-react'
 
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { RegisterHealthInsurance } from '../_components/modalRegisterHealthInsurance'
+import { RegisterHealthInsurance } from '@/app/(protect)/_components/modalRegisterHealthInsurance'
 
 export default function HealthInsurance() {
   return (

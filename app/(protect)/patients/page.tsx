@@ -1,6 +1,6 @@
 'use client'
 import { Card } from '@/components/ui/card'
-import { PatientExpense } from '../_components/modalPatientExpense'
+import { PatientExpense } from '@/app/(protect)/_components/modalPatientExpense'
 import { Separator } from '@/components/ui/separator'
 import {
   NavigationMenu,

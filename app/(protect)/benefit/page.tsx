@@ -1,4 +1,4 @@
-import { ModalSeeOrCreateBenefit } from '../_components/modalBenefit'
+import { ModalSeeOrCreateBenefit } from '@/app/(protect)/_components/modalBenefit'
 
 export default function Benefit() {
   return (

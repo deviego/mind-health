@@ -17,7 +17,7 @@ import {
   HoverCardTrigger,
 } from '@/components/ui/hover-card'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { Scheduler } from '../_components/calendar'
+import { Scheduler } from '@/app/(protect)/_components/calendar'
 
 const HomePage = () => {
   const today = new Date()
